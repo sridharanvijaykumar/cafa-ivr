@@ -1,0 +1,148 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,margin=0.62in]{geometry}
+\usepackage{booktabs,array,amsmath,amssymb,xcolor,enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlist{nosep,leftmargin=*}
+\newcommand{\cafa}{\textbf{CAFA-IVR}}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries CAFA-IVR v1.0}\\[3pt]
+{\large Counterfactual ASR Failure Attribution for Conversational IVR}\\[6pt]
+\textbf{Reference Specification} \quad | \quad Vijay Kumar Sridharan \quad | \quad August 2026\\[2pt]
+IEEE Senior Member \quad | \quad Frisco, TX, USA
+\end{center}
+\hrule
+
+\section*{1. Purpose}
+\cafa{} defines a portable test procedure for determining whether adding an audio/ASR layer causes a conversational test to fail when the same semantic request succeeds through a reference-text control. The framework is independent of ASR vendor, NLU vendor, contact-center platform, and dialogue architecture.
+
+\section*{2. Required paired execution}
+For every semantic test $i$, an implementation \textbf{MUST} execute both paths using the same frozen downstream configuration:
+\[
+T_i:\ \text{reference text}\rightarrow\text{downstream system},\qquad
+A_i:\ \text{audio}\rightarrow\text{ASR}\rightarrow\text{downstream system}.
+\]
+The two paths \textbf{MUST} share the same expected semantic outcome. The downstream component may be an intent classifier, workflow, LLM agent, or tool-using system, provided a reproducible task oracle exists.
+
+\section*{3. Attribution states}
+\begin{center}
+\begin{tabular}{cclp{2.7in}}
+\toprule
+Text & Audio & State & Interpretation\\
+\midrule
+Pass & Pass & \texttt{HEALTHY} & End-to-end semantic success.\\
+Pass & Fail & \texttt{SPEECH\_ATTRIBUTABLE} & Failure appears only after the speech path is introduced.\\
+Fail & Fail & \texttt{DOWNSTREAM\_OR\_TEST} & Reference text already fails; do not attribute the failure to ASR.\\
+Fail & Pass & \texttt{CONTEXT\_OR\_ORACLE} & Investigate nondeterminism, context, or the expected-result oracle.\\
+\bottomrule
+\end{tabular}
+\end{center}
+A speech-attributable state narrows the failure surface; it does not by itself prove one acoustic root cause.
+
+\section*{4. Metrics}
+\textbf{WER.} Preserve conventional lexical fidelity:
+\[
+\mathrm{WER}=\frac{S+D+I}{N}.
+\]
+
+\textbf{ASR-IFR.} Let $F_i=1$ when the text control passes and the audio-path task fails, else $0$:
+\[
+\mathrm{ASR\mbox{-}IFR}=\frac{1}{N}\sum_i F_i.
+\]
+A conditional variant may divide by the number of text-control successes.
+
+\textbf{CEER.} Critical-Entity Error Rate measures governed semantic values such as amounts, dates, negation, account type, authentication values, and lock/unlock/cancel/confirm actions. Entity values \textbf{SHOULD} be normalized before scoring.
+
+\textbf{CIER (optional).} A deployment may apply severity weights to L0--L4 outcomes. The reference scorer uses illustrative weights L0=0, L1=0, L2=.25, L3=.65, L4=1.0. These are policy examples, not universal thresholds.
+
+\section*{5. Minimum trial record}
+\begin{center}\small
+\begin{tabular}{lp{1.0in}p{4.4in}}
+\toprule
+Field & Status & Purpose\\
+\midrule
+\texttt{test\_id} & Required & Stable semantic test identifier.\\
+\texttt{condition} & Required & Clean, telephony, noise, rate, or another controlled condition.\\
+\texttt{reference\_text} & Required & Canonical human-authored reference.\\
+\texttt{asr\_transcript} & Required & Observed speech-engine transcript.\\
+Expected/observed outcome & Required & Intent labels or equivalent task oracle.\\
+\texttt{text\_control\_pass} & Required & Downstream result when ASR is bypassed.\\
+\texttt{audio\_task\_success} & Required & Outcome through audio $\rightarrow$ ASR.\\
+Entity JSON & Recommended & Governed critical values and observed values.\\
+\texttt{risk\_tier} & Recommended & Local Low/Medium/High or equivalent.\\
+Versions & Recommended & ASR, NLU/agent, prompt/tool/oracle configuration.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{6. Minimum acoustic matrix}
+A production suite \textbf{SHOULD} establish clean/wideband baseline, 8-kHz or actual telephony path, moderate and severe controlled noise, bounded speaking-rate variation, representative human speakers, and critical-semantic cases. Synthetic speech may expand coverage but should not be the only evidence used for a human-robustness claim.
+
+\section*{7. Release-gating policy}
+\cafa{} does not prescribe universal numeric thresholds. A team should compare a candidate against its last approved baseline and use stricter policy for high-consequence journeys. A practical policy is:
+\begin{enumerate}
+\item no unexplained meaningful increase in ASR-IFR;
+\item no new governed critical-entity failures in high-risk journeys without explicit approval;
+\item WER regressions are investigated, but WER alone does not decide the release;
+\item text-control failures are routed to NLU/agent/test owners rather than ASR owners;
+\item failed gates retain audio, transcript, versions, expected outcome, and observed outcome for replay.
+\end{enumerate}
+
+\section*{8. CI/CD lifecycle}
+\begin{center}
+\fbox{Freeze versions} $\rightarrow$ \fbox{Run text controls} $\rightarrow$ \fbox{Run audio suite} $\rightarrow$ \fbox{Score}\\[4pt]
+$\rightarrow$ \fbox{Compare baseline} $\rightarrow$ \fbox{Pass / attributed investigation / rerun}
+\end{center}
+
+An adapter only needs to populate the trial record. Credentials should stay in the adopting platform's standard credential mechanism and must not be committed to a CAFA results package.
+
+\section*{9. Reproducibility and independent adoption}
+An auditable run should freeze the audio or source identifiers, perturbation parameters and random seeds, ASR version, downstream version, prompts/tools when applicable, locale, endpoint configuration, test-oracle version, and CAFA-IVR specification version.
+
+An organization may accurately state that it adopted CAFA-IVR only when it actually used the paired procedure. A useful implementation statement is:
+
+\begin{quote}\small
+``We evaluated conversational voice regressions using CAFA-IVR v1.0 paired reference-text and audio-path testing and incorporated ASR-IFR into our failure-triage workflow.''
+\end{quote}
+
+Independent adopters should retain test scope, decision, resulting engineering change, and artifacts sufficient for a third party to verify the use.
+
+\section*{10. Conformance checklist}
+A CAFA-IVR v1.0 conforming implementation should be able to answer \emph{yes} to the following:
+\begin{itemize}
+\item Each semantic test has a stable ID, reference text, and expected outcome.
+\item Reference text and audio use the same frozen downstream configuration.
+\item The ASR transcript and both path outcomes are retained at trial level.
+\item ASR-IFR is calculated from the paired outcomes, not inferred from WER.
+\item High-risk critical entities are explicitly annotated or the absence of CEER is documented.
+\item Candidate results are compared with a named approved baseline when used for release gating.
+\item Failed trials retain enough evidence for replay and independent review.
+\item The CAFA-IVR specification version and tested ASR/downstream versions are recorded.
+\end{itemize}
+
+\section*{11. Independent adoption record}
+When the framework is evaluated or adopted by an independent team, retain the following fields so use can be verified later:
+\begin{center}\small
+\begin{tabular}{lp{4.9in}}
+\toprule
+Field & Record\\
+\midrule
+Organization / team & Name and business unit\\
+Evaluator & Name, title, and contact\\
+CAFA-IVR version & Specification/release used\\
+Technical scope & ASR, NLU/agent, number of tests, number of audio trials\\
+Evidence type & Human, synthetic, or mixed speech; acoustic conditions\\
+Operational use & Test plan, CI job, dashboard, runbook, release decision, or evaluation only\\
+Engineering impact & Configuration/model change, avoided misdiagnosis, new gate, issue found, release decision\\
+Evidence retained & Report, screenshot, commit, run ID, URL, artifact hash, or internal document reference\\
+Public citation permission & Yes / No / Limited\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{12. Non-endorsement}
+CAFA-IVR is a technical reference framework. Listing an employer, vendor, dataset, or platform does not imply sponsorship or endorsement. Production thresholds and risk decisions remain the responsibility of the adopting organization.
+
+\end{document}

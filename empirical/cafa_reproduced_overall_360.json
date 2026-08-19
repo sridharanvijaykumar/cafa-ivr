@@ -1,0 +1,11 @@
+{
+  "n": 360,
+  "wer": 0.6484292328042328,
+  "intent_accuracy": 0.4111111111111111,
+  "text_control_accuracy": 0.8,
+  "asr_ifr": 0.39444444444444443,
+  "ceer": null,
+  "cier": null,
+  "speech_attributable_count": 142,
+  "condition": "OVERALL"
+}

@@ -1,0 +1,361 @@
+test_id,condition,reference_text,asr_transcript,expected_intent,predicted_intent,text_control_pass,audio_task_success,expected_entities_json,predicted_entities_json,impact_level,risk_tier,evidence_type
+IVR-01-14,clean,what is the outstanding balance,what is the outstanding balance,check_balance,check_balance,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-01-19,clean,I need the balance amount,I need the balance amount,check_balance,check_balance,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-02-01,clean,show my recent transactions,show my recent transactions,recent_transactions,recent_transactions,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-02-04,clean,what are my last transactions,what are my last transactions,recent_transactions,recent_transactions,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-03-07,clean,give me my payment deadline,give me my payment deadline,payment_due_date,payment_status,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-03-11,clean,what date is my next payment due,what date is my next payment due,payment_due_date,payment_due_date,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-04-10,clean,minimum payment amount please,minimum payment amount please,minimum_payment,minimum_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-04-16,clean,what's required for the minimum,what's required for the minimum,minimum_payment,minimum_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-05-11,clean,pay twenty five dollars today,pay twenty five dollars today,make_payment,make_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-05-20,clean,make a payment from my checking account,make a payment from my checking account,make_payment,make_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-06-04,clean,check my last payment,check my last payment,payment_status,payment_history,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-06-12,clean,payment status please,payment status please,payment_status,payment_status,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-07-19,clean,what are my latest payments,what are my latest payments,payment_history,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-07-20,clean,show prior payments,show prior payments,payment_history,payment_history,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-08-13,clean,please cancel the pending payment,please cancel the pending payment,cancel_payment,cancel_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-08-16,clean,don't make the payment on Friday,don't make the payment on Friday,cancel_payment,make_payment,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-09-04,clean,move the scheduled payment to August twentieth,move the scheduled payment to August twentieth,change_payment_date,change_payment_date,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-09-11,clean,change the scheduled date,change the scheduled date,change_payment_date,change_payment_date,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-10-05,clean,automatically pay my bill every month,what is my interest rate,autopay_enroll,interest_rate,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-10-15,clean,I want to use autopay,I want to use autopay,autopay_enroll,autopay_cancel,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-11-06,clean,do not pay automatically,do not pay automatically,autopay_cancel,autopay_enroll,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-11-20,clean,cancel my automatic payments,cancel my automatic payments,autopay_cancel,autopay_cancel,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-12-09,clean,how much credit do I have in total,how much credit do I have in total,credit_limit,available_credit,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-12-13,clean,credit limit please,credit limit please,credit_limit,credit_limit,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-13-13,clean,tell me what I can still spend,tell me what I can still spend,available_credit,available_credit,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-13-16,clean,what's my remaining card availability,what's my remaining card availability,available_credit,available_credit,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-14-05,clean,increase my limit to ten thousand dollars,increase my limit to ten thousand dollars,credit_limit_increase,credit_limit_increase,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-14-11,clean,increase my available credit line,increase my available credit line,credit_limit_increase,available_credit,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-15-06,clean,I want to activate my credit card,I want to activate my credit card,card_activation,card_activation,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-15-09,clean,my new card arrived and I need to activate it,my new card arrived and I need to activate it,card_activation,card_activation,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-16-04,clean,stop my card from being used,stop my card from being used,lock_card,unlock_card,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-16-18,clean,freeze my account card,freeze my account card,lock_card,lock_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-17-03,clean,turn my card back on,turn my card back on,unlock_card,unlock_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-17-17,clean,enable purchases again,the card is missing,unlock_card,lost_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-18-15,clean,my physical card is missing,my physical card is missing,lost_card,lost_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-18-20,clean,the card is missing,the card is missing,lost_card,lost_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-19-01,clean,my card was stolen,my card was stolen,stolen_card,stolen_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-19-03,clean,report a stolen card,replace my broken card,stolen_card,replace_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-20-17,clean,I did not approve this purchase,I did not approve this purchase,fraud_report,fraud_report,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-20-19,clean,I need to report card fraud,I need to report card fraud,fraud_report,stolen_card,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-21-14,clean,dispute a charge from yesterday,dispute a charge from yesterday,dispute_transaction,dispute_transaction,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-21-18,clean,dispute my latest purchase,dispute my latest purchase,dispute_transaction,dispute_transaction,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-22-10,clean,my purchase keeps getting declined,my purchase keeps getting declined,declined_transaction,declined_transaction,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-22-20,clean,check why my transaction was declined,check why my transaction was declined,declined_transaction,declined_transaction,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-23-12,clean,replace the physical card,replace the physical card,replace_card,replace_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-23-16,clean,replace my broken card,replace my broken card,replace_card,replace_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-24-08,clean,I need a new pin,the card is missing,pin_help,lost_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-24-20,clean,I need help resetting the pin,my physical card is missing,pin_help,lost_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-25-04,clean,tell the bank I'm traveling,tell the bank I'm traveling,travel_notice,travel_notice,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-25-12,clean,add a trip to Italy for next week,add a trip to Italy for next week,travel_notice,travel_notice,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-26-06,clean,change where my statements are mailed,change where my statements are mailed,update_address,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-26-20,clean,use my new home address,use my new home address,update_address,update_address,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-27-10,clean,show my billing statement,show my billing statement,statement_request,statement_request,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-27-16,clean,I need an older statement,what is my interest rate,statement_request,interest_rate,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-28-01,clean,what is my interest rate,what is my interest rate,interest_rate,interest_rate,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-28-08,clean,tell me my card's interest rate,tell me my card's interest rate,interest_rate,interest_rate,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-29-13,clean,what is this service fee,what is this service fee,fee_question,fee_question,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-29-16,clean,what does this fee mean,what does this fee mean,fee_question,fee_question,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-30-07,clean,can I speak with an agent,can I speak with an agent,speak_to_agent,speak_to_agent,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-30-16,clean,can you get me a person,the card is missing,speak_to_agent,lost_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-01-14,telephony_8khz,what is the outstanding balance,what are my latest payments,check_balance,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-01-19,telephony_8khz,I need the balance amount,I need the balance amount,check_balance,check_balance,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-02-01,telephony_8khz,show my recent transactions,show my recent transactions,recent_transactions,recent_transactions,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-02-04,telephony_8khz,what are my last transactions,what are my last transactions,recent_transactions,recent_transactions,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-03-07,telephony_8khz,give me my payment deadline,give me my payment deadline,payment_due_date,payment_status,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-03-11,telephony_8khz,what date is my next payment due,what date is my next payment due,payment_due_date,payment_due_date,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-04-10,telephony_8khz,minimum payment amount please,minimum payment amount please,minimum_payment,minimum_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-04-16,telephony_8khz,what's required for the minimum,what's required for the minimum,minimum_payment,minimum_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-05-11,telephony_8khz,pay twenty five dollars today,cancel my automatic payments,make_payment,autopay_cancel,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-05-20,telephony_8khz,make a payment from my checking account,make a payment from my checking account,make_payment,make_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-06-04,telephony_8khz,check my last payment,check my last payment,payment_status,payment_history,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-06-12,telephony_8khz,payment status please,payment status please,payment_status,payment_status,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-07-19,telephony_8khz,what are my latest payments,what are my latest payments,payment_history,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-07-20,telephony_8khz,show prior payments,show prior payments,payment_history,payment_history,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-08-13,telephony_8khz,please cancel the pending payment,check my last payment,cancel_payment,payment_history,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-08-16,telephony_8khz,don't make the payment on Friday,don't make the payment on Friday,cancel_payment,make_payment,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-09-04,telephony_8khz,move the scheduled payment to August twentieth,move the scheduled payment to August twentieth,change_payment_date,change_payment_date,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-09-11,telephony_8khz,change the scheduled date,change the scheduled date,change_payment_date,change_payment_date,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-10-05,telephony_8khz,automatically pay my bill every month,replace my broken card,autopay_enroll,replace_card,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-10-15,telephony_8khz,I want to use autopay,I want to use autopay,autopay_enroll,autopay_cancel,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-11-06,telephony_8khz,do not pay automatically,do not pay automatically,autopay_cancel,autopay_enroll,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-11-20,telephony_8khz,cancel my automatic payments,check my last payment,autopay_cancel,payment_history,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-12-09,telephony_8khz,how much credit do I have in total,what date is my next payment due,credit_limit,payment_due_date,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-12-13,telephony_8khz,credit limit please,credit limit please,credit_limit,credit_limit,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-13-13,telephony_8khz,tell me what I can still spend,report a stolen card,available_credit,stolen_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-13-16,telephony_8khz,what's my remaining card availability,what are my last transactions,available_credit,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-14-05,telephony_8khz,increase my limit to ten thousand dollars,increase my limit to ten thousand dollars,credit_limit_increase,credit_limit_increase,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-14-11,telephony_8khz,increase my available credit line,I need the balance amount,credit_limit_increase,check_balance,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-15-06,telephony_8khz,I want to activate my credit card,I want to activate my credit card,card_activation,card_activation,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-15-09,telephony_8khz,my new card arrived and I need to activate it,my new card arrived and I need to activate it,card_activation,card_activation,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-16-04,telephony_8khz,stop my card from being used,stop my card from being used,lock_card,unlock_card,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-16-18,telephony_8khz,freeze my account card,freeze my account card,lock_card,lock_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-17-03,telephony_8khz,turn my card back on,turn my card back on,unlock_card,unlock_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-17-17,telephony_8khz,enable purchases again,my card was stolen,unlock_card,stolen_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-18-15,telephony_8khz,my physical card is missing,the card is missing,lost_card,lost_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-18-20,telephony_8khz,the card is missing,the card is missing,lost_card,lost_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-19-01,telephony_8khz,my card was stolen,my card was stolen,stolen_card,stolen_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-19-03,telephony_8khz,report a stolen card,replace my broken card,stolen_card,replace_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-20-17,telephony_8khz,I did not approve this purchase,I want to use autopay,fraud_report,autopay_cancel,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-20-19,telephony_8khz,I need to report card fraud,give me my payment deadline,fraud_report,payment_status,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-21-14,telephony_8khz,dispute a charge from yesterday,dispute a charge from yesterday,dispute_transaction,dispute_transaction,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-21-18,telephony_8khz,dispute my latest purchase,dispute my latest purchase,dispute_transaction,dispute_transaction,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-22-10,telephony_8khz,my purchase keeps getting declined,my purchase keeps getting declined,declined_transaction,declined_transaction,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-22-20,telephony_8khz,check why my transaction was declined,show my recent transactions,declined_transaction,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-23-12,telephony_8khz,replace the physical card,replace my broken card,replace_card,replace_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-23-16,telephony_8khz,replace my broken card,replace my broken card,replace_card,replace_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-24-08,telephony_8khz,I need a new pin,I need a new pin,pin_help,pin_help,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-24-20,telephony_8khz,I need help resetting the pin,my physical card is missing,pin_help,lost_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-25-04,telephony_8khz,tell the bank I'm traveling,tell the bank I'm traveling,travel_notice,travel_notice,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-25-12,telephony_8khz,add a trip to Italy for next week,add a trip to Italy for next week,travel_notice,travel_notice,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-26-06,telephony_8khz,change where my statements are mailed,change where my statements are mailed,update_address,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-26-20,telephony_8khz,use my new home address,give me my payment deadline,update_address,payment_status,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-27-10,telephony_8khz,show my billing statement,show my billing statement,statement_request,statement_request,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-27-16,telephony_8khz,I need an older statement,I need an older statement,statement_request,statement_request,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-28-01,telephony_8khz,what is my interest rate,what is my interest rate,interest_rate,interest_rate,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-28-08,telephony_8khz,tell me my card's interest rate,what is my interest rate,interest_rate,interest_rate,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-29-13,telephony_8khz,what is this service fee,what is this service fee,fee_question,fee_question,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-29-16,telephony_8khz,what does this fee mean,what does this fee mean,fee_question,fee_question,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-30-07,telephony_8khz,can I speak with an agent,can I speak with an agent,speak_to_agent,speak_to_agent,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-30-16,telephony_8khz,can you get me a person,can you get me a person,speak_to_agent,speak_to_agent,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-01-14,noise_15db,what is the outstanding balance,what is the outstanding balance,check_balance,check_balance,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-01-19,noise_15db,I need the balance amount,I want to activate my credit card,check_balance,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-02-01,noise_15db,show my recent transactions,show my recent transactions,recent_transactions,recent_transactions,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-02-04,noise_15db,what are my last transactions,what are my last transactions,recent_transactions,recent_transactions,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-03-07,noise_15db,give me my payment deadline,what date is my next payment due,payment_due_date,payment_due_date,0,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-03-11,noise_15db,what date is my next payment due,what date is my next payment due,payment_due_date,payment_due_date,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-04-10,noise_15db,minimum payment amount please,I want to activate my credit card,minimum_payment,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-04-16,noise_15db,what's required for the minimum,what's required for the minimum,minimum_payment,minimum_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-05-11,noise_15db,pay twenty five dollars today,how much credit do I have in total,make_payment,available_credit,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-05-20,noise_15db,make a payment from my checking account,make a payment from my checking account,make_payment,make_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-06-04,noise_15db,check my last payment,what are my latest payments,payment_status,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-06-12,noise_15db,payment status please,I want to activate my credit card,payment_status,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-07-19,noise_15db,what are my latest payments,what are my last transactions,payment_history,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-07-20,noise_15db,show prior payments,show my recent transactions,payment_history,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-08-13,noise_15db,please cancel the pending payment,please cancel the pending payment,cancel_payment,cancel_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-08-16,noise_15db,don't make the payment on Friday,don't make the payment on Friday,cancel_payment,make_payment,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-09-04,noise_15db,move the scheduled payment to August twentieth,move the scheduled payment to August twentieth,change_payment_date,change_payment_date,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-09-11,noise_15db,change the scheduled date,stop my card from being used,change_payment_date,unlock_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-10-05,noise_15db,automatically pay my bill every month,my new card arrived and I need to activate it,autopay_enroll,card_activation,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-10-15,noise_15db,I want to use autopay,I want to use autopay,autopay_enroll,autopay_cancel,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-11-06,noise_15db,do not pay automatically,stop my card from being used,autopay_cancel,unlock_card,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-11-20,noise_15db,cancel my automatic payments,move the scheduled payment to August twentieth,autopay_cancel,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-12-09,noise_15db,how much credit do I have in total,how much credit do I have in total,credit_limit,available_credit,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-12-13,noise_15db,credit limit please,what date is my next payment due,credit_limit,payment_due_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-13-13,noise_15db,tell me what I can still spend,I want to activate my credit card,available_credit,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-13-16,noise_15db,what's my remaining card availability,what's my remaining card availability,available_credit,available_credit,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-14-05,noise_15db,increase my limit to ten thousand dollars,increase my limit to ten thousand dollars,credit_limit_increase,credit_limit_increase,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-14-11,noise_15db,increase my available credit line,my new card arrived and I need to activate it,credit_limit_increase,card_activation,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-15-06,noise_15db,I want to activate my credit card,I want to activate my credit card,card_activation,card_activation,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-15-09,noise_15db,my new card arrived and I need to activate it,my new card arrived and I need to activate it,card_activation,card_activation,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-16-04,noise_15db,stop my card from being used,move the scheduled payment to August twentieth,lock_card,change_payment_date,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-16-18,noise_15db,freeze my account card,I need the balance amount,lock_card,check_balance,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-17-03,noise_15db,turn my card back on,turn my card back on,unlock_card,unlock_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-17-17,noise_15db,enable purchases again,I want to activate my credit card,unlock_card,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-18-15,noise_15db,my physical card is missing,my physical card is missing,lost_card,lost_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-18-20,noise_15db,the card is missing,the card is missing,lost_card,lost_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-19-01,noise_15db,my card was stolen,I need to report card fraud,stolen_card,stolen_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-19-03,noise_15db,report a stolen card,I need to report card fraud,stolen_card,stolen_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-20-17,noise_15db,I did not approve this purchase,move the scheduled payment to August twentieth,fraud_report,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-20-19,noise_15db,I need to report card fraud,I want to activate my credit card,fraud_report,card_activation,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-21-14,noise_15db,dispute a charge from yesterday,dispute a charge from yesterday,dispute_transaction,dispute_transaction,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-21-18,noise_15db,dispute my latest purchase,I did not approve this purchase,dispute_transaction,fraud_report,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-22-10,noise_15db,my purchase keeps getting declined,move the scheduled payment to August twentieth,declined_transaction,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-22-20,noise_15db,check why my transaction was declined,check why my transaction was declined,declined_transaction,declined_transaction,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-23-12,noise_15db,replace the physical card,what's required for the minimum,replace_card,minimum_payment,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-23-16,noise_15db,replace my broken card,replace the physical card,replace_card,replace_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-24-08,noise_15db,I need a new pin,give me my payment deadline,pin_help,payment_status,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-24-20,noise_15db,I need help resetting the pin,I need help resetting the pin,pin_help,pin_help,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-25-04,noise_15db,tell the bank I'm traveling,tell the bank I'm traveling,travel_notice,travel_notice,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-25-12,noise_15db,add a trip to Italy for next week,my new card arrived and I need to activate it,travel_notice,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-26-06,noise_15db,change where my statements are mailed,change where my statements are mailed,update_address,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-26-20,noise_15db,use my new home address,tell me my card's interest rate,update_address,interest_rate,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-27-10,noise_15db,show my billing statement,stop my card from being used,statement_request,unlock_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-27-16,noise_15db,I need an older statement,I need to report card fraud,statement_request,stolen_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-28-01,noise_15db,what is my interest rate,what is my interest rate,interest_rate,interest_rate,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-28-08,noise_15db,tell me my card's interest rate,tell me my card's interest rate,interest_rate,interest_rate,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-29-13,noise_15db,what is this service fee,what are my latest payments,fee_question,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-29-16,noise_15db,what does this fee mean,what is this service fee,fee_question,fee_question,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-30-07,noise_15db,can I speak with an agent,tell me my card's interest rate,speak_to_agent,interest_rate,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-30-16,noise_15db,can you get me a person,can I speak with an agent,speak_to_agent,speak_to_agent,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-01-14,noise_5db,what is the outstanding balance,what date is my next payment due,check_balance,payment_due_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-01-19,noise_5db,I need the balance amount,I did not approve this purchase,check_balance,fraud_report,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-02-01,noise_5db,show my recent transactions,check why my transaction was declined,recent_transactions,declined_transaction,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-02-04,noise_5db,what are my last transactions,move the scheduled payment to August twentieth,recent_transactions,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-03-07,noise_5db,give me my payment deadline,what date is my next payment due,payment_due_date,payment_due_date,0,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-03-11,noise_5db,what date is my next payment due,my new card arrived and I need to activate it,payment_due_date,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-04-10,noise_5db,minimum payment amount please,I want to activate my credit card,minimum_payment,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-04-16,noise_5db,what's required for the minimum,what date is my next payment due,minimum_payment,payment_due_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-05-11,noise_5db,pay twenty five dollars today,my new card arrived and I need to activate it,make_payment,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-05-20,noise_5db,make a payment from my checking account,move the scheduled payment to August twentieth,make_payment,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-06-04,noise_5db,check my last payment,stop my card from being used,payment_status,unlock_card,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-06-12,noise_5db,payment status please,I want to activate my credit card,payment_status,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-07-19,noise_5db,what are my latest payments,what are my last transactions,payment_history,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-07-20,noise_5db,show prior payments,change the scheduled date,payment_history,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-08-13,noise_5db,please cancel the pending payment,my new card arrived and I need to activate it,cancel_payment,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-08-16,noise_5db,don't make the payment on Friday,what date is my next payment due,cancel_payment,payment_due_date,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-09-04,noise_5db,move the scheduled payment to August twentieth,my new card arrived and I need to activate it,change_payment_date,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-09-11,noise_5db,change the scheduled date,stop my card from being used,change_payment_date,unlock_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-10-05,noise_5db,automatically pay my bill every month,my new card arrived and I need to activate it,autopay_enroll,card_activation,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-10-15,noise_5db,I want to use autopay,what date is my next payment due,autopay_enroll,payment_due_date,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-11-06,noise_5db,do not pay automatically,what are my last transactions,autopay_cancel,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-11-20,noise_5db,cancel my automatic payments,what are my last transactions,autopay_cancel,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-12-09,noise_5db,how much credit do I have in total,my new card arrived and I need to activate it,credit_limit,card_activation,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-12-13,noise_5db,credit limit please,what does this fee mean,credit_limit,fee_question,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-13-13,noise_5db,tell me what I can still spend,check why my transaction was declined,available_credit,declined_transaction,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-13-16,noise_5db,what's my remaining card availability,my new card arrived and I need to activate it,available_credit,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-14-05,noise_5db,increase my limit to ten thousand dollars,my new card arrived and I need to activate it,credit_limit_increase,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-14-11,noise_5db,increase my available credit line,how much credit do I have in total,credit_limit_increase,available_credit,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-15-06,noise_5db,I want to activate my credit card,my new card arrived and I need to activate it,card_activation,card_activation,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-15-09,noise_5db,my new card arrived and I need to activate it,my new card arrived and I need to activate it,card_activation,card_activation,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-16-04,noise_5db,stop my card from being used,show my recent transactions,lock_card,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-16-18,noise_5db,freeze my account card,I want to activate my credit card,lock_card,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-17-03,noise_5db,turn my card back on,give me my payment deadline,unlock_card,payment_status,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-17-17,noise_5db,enable purchases again,check why my transaction was declined,unlock_card,declined_transaction,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-18-15,noise_5db,my physical card is missing,my new card arrived and I need to activate it,lost_card,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-18-20,noise_5db,the card is missing,how much credit do I have in total,lost_card,available_credit,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-19-01,noise_5db,my card was stolen,what are my last transactions,stolen_card,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-19-03,noise_5db,report a stolen card,show my recent transactions,stolen_card,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-20-17,noise_5db,I did not approve this purchase,I did not approve this purchase,fraud_report,fraud_report,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-20-19,noise_5db,I need to report card fraud,I want to activate my credit card,fraud_report,card_activation,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-21-14,noise_5db,dispute a charge from yesterday,what date is my next payment due,dispute_transaction,payment_due_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-21-18,noise_5db,dispute my latest purchase,what date is my next payment due,dispute_transaction,payment_due_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-22-10,noise_5db,my purchase keeps getting declined,my new card arrived and I need to activate it,declined_transaction,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-22-20,noise_5db,check why my transaction was declined,check why my transaction was declined,declined_transaction,declined_transaction,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-23-12,noise_5db,replace the physical card,I want to activate my credit card,replace_card,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-23-16,noise_5db,replace my broken card,I want to activate my credit card,replace_card,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-24-08,noise_5db,I need a new pin,I need the balance amount,pin_help,check_balance,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-24-20,noise_5db,I need help resetting the pin,I need help resetting the pin,pin_help,pin_help,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-25-04,noise_5db,tell the bank I'm traveling,tell me my card's interest rate,travel_notice,interest_rate,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-25-12,noise_5db,add a trip to Italy for next week,my new card arrived and I need to activate it,travel_notice,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-26-06,noise_5db,change where my statements are mailed,tell me my card's interest rate,update_address,interest_rate,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-26-20,noise_5db,use my new home address,I need to report card fraud,update_address,stolen_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-27-10,noise_5db,show my billing statement,show my recent transactions,statement_request,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-27-16,noise_5db,I need an older statement,I want to activate my credit card,statement_request,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-28-01,noise_5db,what is my interest rate,I want to activate my credit card,interest_rate,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-28-08,noise_5db,tell me my card's interest rate,my new card arrived and I need to activate it,interest_rate,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-29-13,noise_5db,what is this service fee,I want to activate my credit card,fee_question,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-29-16,noise_5db,what does this fee mean,how much credit do I have in total,fee_question,available_credit,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-30-07,noise_5db,can I speak with an agent,add a trip to Italy for next week,speak_to_agent,travel_notice,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-30-16,noise_5db,can you get me a person,change where my statements are mailed,speak_to_agent,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-01-14,rate_1_15x,what is the outstanding balance,what is my interest rate,check_balance,interest_rate,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-01-19,rate_1_15x,I need the balance amount,change the scheduled date,check_balance,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-02-01,rate_1_15x,show my recent transactions,show my recent transactions,recent_transactions,recent_transactions,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-02-04,rate_1_15x,what are my last transactions,what are my last transactions,recent_transactions,recent_transactions,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-03-07,rate_1_15x,give me my payment deadline,give me my payment deadline,payment_due_date,payment_status,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-03-11,rate_1_15x,what date is my next payment due,what date is my next payment due,payment_due_date,payment_due_date,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-04-10,rate_1_15x,minimum payment amount please,payment status please,minimum_payment,payment_status,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-04-16,rate_1_15x,what's required for the minimum,what's required for the minimum,minimum_payment,minimum_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-05-11,rate_1_15x,pay twenty five dollars today,pay twenty five dollars today,make_payment,make_payment,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-05-20,rate_1_15x,make a payment from my checking account,I want to activate my credit card,make_payment,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-06-04,rate_1_15x,check my last payment,what is my interest rate,payment_status,interest_rate,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-06-12,rate_1_15x,payment status please,payment status please,payment_status,payment_status,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-07-19,rate_1_15x,what are my latest payments,what are my latest payments,payment_history,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-07-20,rate_1_15x,show prior payments,show prior payments,payment_history,payment_history,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-08-13,rate_1_15x,please cancel the pending payment,change the scheduled date,cancel_payment,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-08-16,rate_1_15x,don't make the payment on Friday,dispute a charge from yesterday,cancel_payment,dispute_transaction,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-09-04,rate_1_15x,move the scheduled payment to August twentieth,move the scheduled payment to August twentieth,change_payment_date,change_payment_date,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-09-11,rate_1_15x,change the scheduled date,change the scheduled date,change_payment_date,change_payment_date,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-10-05,rate_1_15x,automatically pay my bill every month,replace the physical card,autopay_enroll,replace_card,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-10-15,rate_1_15x,I want to use autopay,I want to use autopay,autopay_enroll,autopay_cancel,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-11-06,rate_1_15x,do not pay automatically,do not pay automatically,autopay_cancel,autopay_enroll,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-11-20,rate_1_15x,cancel my automatic payments,cancel my automatic payments,autopay_cancel,autopay_cancel,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-12-09,rate_1_15x,how much credit do I have in total,how much credit do I have in total,credit_limit,available_credit,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-12-13,rate_1_15x,credit limit please,credit limit please,credit_limit,credit_limit,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-13-13,rate_1_15x,tell me what I can still spend,report a stolen card,available_credit,stolen_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-13-16,rate_1_15x,what's my remaining card availability,what are my last transactions,available_credit,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-14-05,rate_1_15x,increase my limit to ten thousand dollars,I want to activate my credit card,credit_limit_increase,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-14-11,rate_1_15x,increase my available credit line,what is my interest rate,credit_limit_increase,interest_rate,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-15-06,rate_1_15x,I want to activate my credit card,I want to activate my credit card,card_activation,card_activation,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-15-09,rate_1_15x,my new card arrived and I need to activate it,my new card arrived and I need to activate it,card_activation,card_activation,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-16-04,rate_1_15x,stop my card from being used,stop my card from being used,lock_card,unlock_card,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-16-18,rate_1_15x,freeze my account card,freeze my account card,lock_card,lock_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-17-03,rate_1_15x,turn my card back on,turn my card back on,unlock_card,unlock_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-17-17,rate_1_15x,enable purchases again,my card was stolen,unlock_card,stolen_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-18-15,rate_1_15x,my physical card is missing,the card is missing,lost_card,lost_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-18-20,rate_1_15x,the card is missing,the card is missing,lost_card,lost_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-19-01,rate_1_15x,my card was stolen,my card was stolen,stolen_card,stolen_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-19-03,rate_1_15x,report a stolen card,report a stolen card,stolen_card,stolen_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-20-17,rate_1_15x,I did not approve this purchase,I did not approve this purchase,fraud_report,fraud_report,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-20-19,rate_1_15x,I need to report card fraud,I need to report card fraud,fraud_report,stolen_card,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-21-14,rate_1_15x,dispute a charge from yesterday,dispute a charge from yesterday,dispute_transaction,dispute_transaction,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-21-18,rate_1_15x,dispute my latest purchase,payment status please,dispute_transaction,payment_status,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-22-10,rate_1_15x,my purchase keeps getting declined,I need to report card fraud,declined_transaction,stolen_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-22-20,rate_1_15x,check why my transaction was declined,tell me what I can still spend,declined_transaction,available_credit,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-23-12,rate_1_15x,replace the physical card,replace my broken card,replace_card,replace_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-23-16,rate_1_15x,replace my broken card,replace my broken card,replace_card,replace_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-24-08,rate_1_15x,I need a new pin,my card was stolen,pin_help,stolen_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-24-20,rate_1_15x,I need help resetting the pin,my card was stolen,pin_help,stolen_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-25-04,rate_1_15x,tell the bank I'm traveling,the card is missing,travel_notice,lost_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-25-12,rate_1_15x,add a trip to Italy for next week,add a trip to Italy for next week,travel_notice,travel_notice,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-26-06,rate_1_15x,change where my statements are mailed,tell me what I can still spend,update_address,available_credit,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-26-20,rate_1_15x,use my new home address,use my new home address,update_address,update_address,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-27-10,rate_1_15x,show my billing statement,change the scheduled date,statement_request,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-27-16,rate_1_15x,I need an older statement,change the scheduled date,statement_request,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-28-01,rate_1_15x,what is my interest rate,what is my interest rate,interest_rate,interest_rate,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-28-08,rate_1_15x,tell me my card's interest rate,tell me my card's interest rate,interest_rate,interest_rate,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-29-13,rate_1_15x,what is this service fee,what does this fee mean,fee_question,fee_question,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-29-16,rate_1_15x,what does this fee mean,what does this fee mean,fee_question,fee_question,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-30-07,rate_1_15x,can I speak with an agent,change the scheduled date,speak_to_agent,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-30-16,rate_1_15x,can you get me a person,my card was stolen,speak_to_agent,stolen_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-01-14,telephony_8khz_noise_15db,what is the outstanding balance,move the scheduled payment to August twentieth,check_balance,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-01-19,telephony_8khz_noise_15db,I need the balance amount,I want to activate my credit card,check_balance,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-02-01,telephony_8khz_noise_15db,show my recent transactions,my new card arrived and I need to activate it,recent_transactions,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-02-04,telephony_8khz_noise_15db,what are my last transactions,give me my payment deadline,recent_transactions,payment_status,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-03-07,telephony_8khz_noise_15db,give me my payment deadline,give me my payment deadline,payment_due_date,payment_status,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-03-11,telephony_8khz_noise_15db,what date is my next payment due,what date is my next payment due,payment_due_date,payment_due_date,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-04-10,telephony_8khz_noise_15db,minimum payment amount please,change where my statements are mailed,minimum_payment,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-04-16,telephony_8khz_noise_15db,what's required for the minimum,how much credit do I have in total,minimum_payment,available_credit,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-05-11,telephony_8khz_noise_15db,pay twenty five dollars today,my new card arrived and I need to activate it,make_payment,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-05-20,telephony_8khz_noise_15db,make a payment from my checking account,my new card arrived and I need to activate it,make_payment,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-06-04,telephony_8khz_noise_15db,check my last payment,what are my last transactions,payment_status,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-06-12,telephony_8khz_noise_15db,payment status please,can I speak with an agent,payment_status,speak_to_agent,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-07-19,telephony_8khz_noise_15db,what are my latest payments,what are my last transactions,payment_history,recent_transactions,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-07-20,telephony_8khz_noise_15db,show prior payments,show my recent transactions,payment_history,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-08-13,telephony_8khz_noise_15db,please cancel the pending payment,my new card arrived and I need to activate it,cancel_payment,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-08-16,telephony_8khz_noise_15db,don't make the payment on Friday,my new card arrived and I need to activate it,cancel_payment,card_activation,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-09-04,telephony_8khz_noise_15db,move the scheduled payment to August twentieth,my new card arrived and I need to activate it,change_payment_date,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-09-11,telephony_8khz_noise_15db,change the scheduled date,my physical card is missing,change_payment_date,lost_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-10-05,telephony_8khz_noise_15db,automatically pay my bill every month,my new card arrived and I need to activate it,autopay_enroll,card_activation,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-10-15,telephony_8khz_noise_15db,I want to use autopay,make a payment from my checking account,autopay_enroll,make_payment,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-11-06,telephony_8khz_noise_15db,do not pay automatically,do not pay automatically,autopay_cancel,autopay_enroll,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-11-20,telephony_8khz_noise_15db,cancel my automatic payments,move the scheduled payment to August twentieth,autopay_cancel,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-12-09,telephony_8khz_noise_15db,how much credit do I have in total,how much credit do I have in total,credit_limit,available_credit,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-12-13,telephony_8khz_noise_15db,credit limit please,change where my statements are mailed,credit_limit,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-13-13,telephony_8khz_noise_15db,tell me what I can still spend,my new card arrived and I need to activate it,available_credit,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-13-16,telephony_8khz_noise_15db,what's my remaining card availability,what's my remaining card availability,available_credit,available_credit,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-14-05,telephony_8khz_noise_15db,increase my limit to ten thousand dollars,what's my remaining card availability,credit_limit_increase,available_credit,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-14-11,telephony_8khz_noise_15db,increase my available credit line,my new card arrived and I need to activate it,credit_limit_increase,card_activation,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-15-06,telephony_8khz_noise_15db,I want to activate my credit card,I want to activate my credit card,card_activation,card_activation,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-15-09,telephony_8khz_noise_15db,my new card arrived and I need to activate it,my new card arrived and I need to activate it,card_activation,card_activation,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-16-04,telephony_8khz_noise_15db,stop my card from being used,stop my card from being used,lock_card,unlock_card,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-16-18,telephony_8khz_noise_15db,freeze my account card,what's required for the minimum,lock_card,minimum_payment,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-17-03,telephony_8khz_noise_15db,turn my card back on,give me my payment deadline,unlock_card,payment_status,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-17-17,telephony_8khz_noise_15db,enable purchases again,move the scheduled payment to August twentieth,unlock_card,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-18-15,telephony_8khz_noise_15db,my physical card is missing,my physical card is missing,lost_card,lost_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-18-20,telephony_8khz_noise_15db,the card is missing,what are my last transactions,lost_card,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-19-01,telephony_8khz_noise_15db,my card was stolen,I need to report card fraud,stolen_card,stolen_card,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-19-03,telephony_8khz_noise_15db,report a stolen card,I want to activate my credit card,stolen_card,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-20-17,telephony_8khz_noise_15db,I did not approve this purchase,change where my statements are mailed,fraud_report,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-20-19,telephony_8khz_noise_15db,I need to report card fraud,I want to activate my credit card,fraud_report,card_activation,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-21-14,telephony_8khz_noise_15db,dispute a charge from yesterday,what date is my next payment due,dispute_transaction,payment_due_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-21-18,telephony_8khz_noise_15db,dispute my latest purchase,what date is my next payment due,dispute_transaction,payment_due_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-22-10,telephony_8khz_noise_15db,my purchase keeps getting declined,my new card arrived and I need to activate it,declined_transaction,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-22-20,telephony_8khz_noise_15db,check why my transaction was declined,check why my transaction was declined,declined_transaction,declined_transaction,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-23-12,telephony_8khz_noise_15db,replace the physical card,how much credit do I have in total,replace_card,available_credit,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-23-16,telephony_8khz_noise_15db,replace my broken card,stop my card from being used,replace_card,unlock_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-24-08,telephony_8khz_noise_15db,I need a new pin,I need a new pin,pin_help,pin_help,1,1,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-24-20,telephony_8khz_noise_15db,I need help resetting the pin,my new card arrived and I need to activate it,pin_help,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-25-04,telephony_8khz_noise_15db,tell the bank I'm traveling,what date is my next payment due,travel_notice,payment_due_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-25-12,telephony_8khz_noise_15db,add a trip to Italy for next week,my new card arrived and I need to activate it,travel_notice,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-26-06,telephony_8khz_noise_15db,change where my statements are mailed,how much credit do I have in total,update_address,available_credit,0,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-26-20,telephony_8khz_noise_15db,use my new home address,what are my last transactions,update_address,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-27-10,telephony_8khz_noise_15db,show my billing statement,what are my last transactions,statement_request,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-27-16,telephony_8khz_noise_15db,I need an older statement,the card is missing,statement_request,lost_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-28-01,telephony_8khz_noise_15db,what is my interest rate,what are my last transactions,interest_rate,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-28-08,telephony_8khz_noise_15db,tell me my card's interest rate,my new card arrived and I need to activate it,interest_rate,card_activation,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-29-13,telephony_8khz_noise_15db,what is this service fee,what are my latest payments,fee_question,recent_transactions,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-29-16,telephony_8khz_noise_15db,what does this fee mean,what date is my next payment due,fee_question,payment_due_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-30-07,telephony_8khz_noise_15db,can I speak with an agent,move the scheduled payment to August twentieth,speak_to_agent,change_payment_date,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc
+IVR-30-16,telephony_8khz_noise_15db,can you get me a person,my physical card is missing,speak_to_agent,lost_card,1,0,{},{},,Unspecified,measured_synthetic_speech_conformer_ctc

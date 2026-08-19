@@ -1,0 +1,13 @@
+test_id,condition,reference_text,asr_transcript,expected_intent,predicted_intent,text_control_pass,audio_task_success,expected_entities_json,predicted_entities_json,impact_level,risk_tier,evidence_type
+D001,clean,what is my balance,what is my balance,check_balance,check_balance,1,1,{},{},L0,Low,illustrative_demo_not_empirical
+D002,clean,lock my card,look my card,lock_card,card_info,1,0,{},{},L3,High,illustrative_demo_not_empirical
+D003,clean,pay five hundred dollars,pay five thousand dollars,make_payment,make_payment,1,0,"{""amount"":[500]}","{""amount"":[5000]}",L4,High,illustrative_demo_not_empirical
+D004,telephony_8khz,show recent transactions,show recent transactions,recent_transactions,recent_transactions,1,1,{},{},L0,Medium,illustrative_demo_not_empirical
+D005,telephony_8khz,cancel autopay,cancel auto pay,autopay_cancel,autopay_cancel,1,1,{},{},L1,High,illustrative_demo_not_empirical
+D006,noise_15db,did my payment go through,did my payment go through,payment_status,declined_transaction,0,0,{},{},L2,Medium,illustrative_demo_not_empirical
+D007,noise_15db,replace my card,replace my car,replace_card,replace_card,1,1,{},{},L1,High,illustrative_demo_not_empirical
+D008,noise_5db,transfer two hundred dollars,transfer to hundred dollars,transfer_money,transfer_money,1,0,"{""amount"":[200]}","{""amount"":[""to hundred""]}",L4,High,illustrative_demo_not_empirical
+D009,rate_1_15x,what is my due date,what is my due date,payment_due_date,payment_due_date,1,1,{},{},L0,Medium,illustrative_demo_not_empirical
+D010,rate_1_15x,I did not make this charge,I did make this charge,report_fraud,recent_transactions,1,0,"{""negation"":[true]}","{""negation"":[false]}",L4,High,illustrative_demo_not_empirical
+D011,8khz_noise_15db,branch hours please,branch hours please,branch_hours,branch_hours,1,1,{},{},L0,Low,illustrative_demo_not_empirical
+D012,8khz_noise_15db,show my statement,show my statement,statement_request,recent_transactions,0,0,{},{},L2,Medium,illustrative_demo_not_empirical

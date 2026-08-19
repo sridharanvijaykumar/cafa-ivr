@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cafa-ivr"
+version = "1.0.0"
+description = "Reference implementation of Counterfactual ASR Failure Attribution for conversational IVR"
+requires-python = ">=3.10"
+authors = [{name = "Vijay Kumar Sridharan"}]
+license = {text = "Apache-2.0"}
+keywords = ["ASR", "IVR", "conversational AI", "testing", "WER", "NLU"]
+
+[project.scripts]
+cafa-ivr = "cafa_ivr.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

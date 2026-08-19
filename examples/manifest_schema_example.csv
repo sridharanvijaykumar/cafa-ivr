@@ -1,0 +1,13 @@
+test_id,condition,reference_text,expected_intent,expected_entities_json,risk_tier,audio_path
+D001,clean,what is my balance,check_balance,{},Low,audio/<test_id>.wav
+D002,clean,lock my card,lock_card,{},High,audio/<test_id>.wav
+D003,clean,pay five hundred dollars,make_payment,"{""amount"":[500]}",High,audio/<test_id>.wav
+D004,telephony_8khz,show recent transactions,recent_transactions,{},Medium,audio/<test_id>.wav
+D005,telephony_8khz,cancel autopay,autopay_cancel,{},High,audio/<test_id>.wav
+D006,noise_15db,did my payment go through,payment_status,{},Medium,audio/<test_id>.wav
+D007,noise_15db,replace my card,replace_card,{},High,audio/<test_id>.wav
+D008,noise_5db,transfer two hundred dollars,transfer_money,"{""amount"":[200]}",High,audio/<test_id>.wav
+D009,rate_1_15x,what is my due date,payment_due_date,{},Medium,audio/<test_id>.wav
+D010,rate_1_15x,I did not make this charge,report_fraud,"{""negation"":[true]}",High,audio/<test_id>.wav
+D011,8khz_noise_15db,branch hours please,branch_hours,{},Low,audio/<test_id>.wav
+D012,8khz_noise_15db,show my statement,statement_request,{},Medium,audio/<test_id>.wav

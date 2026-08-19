@@ -1,0 +1,22 @@
+# CAFA-IVR Implementation Checklist
+
+- [ ] Stable test IDs assigned
+- [ ] Reference text frozen
+- [ ] Expected intent/task oracle frozen
+- [ ] Text-control path implemented
+- [ ] Audio path implemented
+- [ ] ASR transcript retained
+- [ ] Audio and text use the same downstream configuration
+- [ ] ASR/NLU/agent versions recorded
+- [ ] Clean condition established
+- [ ] Telephony condition established
+- [ ] Controlled noise conditions established where relevant
+- [ ] Human-speaker coverage documented
+- [ ] Critical entities annotated for high-risk cases
+- [ ] WER reported
+- [ ] ASR-IFR reported
+- [ ] CEER reported where entities exist
+- [ ] Failed trials retain evidence for replay
+- [ ] Candidate compared to approved baseline
+- [ ] Local release thresholds governance-approved
+- [ ] Adoption/evaluation record retained

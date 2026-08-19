@@ -1,0 +1,23 @@
+name: CAFA-IVR voice regression
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  cafa-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -e .
+      # Replace this step with the organization's real audio/ASR/NLU runner.
+      - run: cafa-ivr score --input candidate_trials.csv --out candidate
+      - run: |
+          cafa-ivr compare \
+            --baseline approved_baseline/summary.csv \
+            --candidate candidate/summary.csv \
+            --max-asr-ifr-delta 0.02 \
+            --max-ceer-delta 0.01

@@ -1,0 +1,361 @@
+condition,test_id,reference_text,asr_transcript,predicted_phrase_id,expected_intent,predicted_intent,text_control_pass,intent_correct,asr_ifr_contrib,wer,phrase_exact,ctc_nll
+clean,IVR-01-14,what is the outstanding balance,what is the outstanding balance,IVR-01-14,check_balance,check_balance,1,1,0,0.0,1,2.1438887119293213
+clean,IVR-01-19,I need the balance amount,I need the balance amount,IVR-01-19,check_balance,check_balance,1,1,0,0.0,1,3.325821876525879
+clean,IVR-02-01,show my recent transactions,show my recent transactions,IVR-02-01,recent_transactions,recent_transactions,1,1,0,0.0,1,1.2045916318893433
+clean,IVR-02-04,what are my last transactions,what are my last transactions,IVR-02-04,recent_transactions,recent_transactions,1,1,0,0.0,1,1.138922929763794
+clean,IVR-03-07,give me my payment deadline,give me my payment deadline,IVR-03-07,payment_due_date,payment_status,0,0,0,0.0,1,2.561627149581909
+clean,IVR-03-11,what date is my next payment due,what date is my next payment due,IVR-03-11,payment_due_date,payment_due_date,1,1,0,0.0,1,1.4647632837295532
+clean,IVR-04-10,minimum payment amount please,minimum payment amount please,IVR-04-10,minimum_payment,minimum_payment,1,1,0,0.0,1,2.705732583999634
+clean,IVR-04-16,what's required for the minimum,what's required for the minimum,IVR-04-16,minimum_payment,minimum_payment,1,1,0,0.0,1,3.0335941314697266
+clean,IVR-05-11,pay twenty five dollars today,pay twenty five dollars today,IVR-05-11,make_payment,make_payment,1,1,0,0.0,1,1.4779671430587769
+clean,IVR-05-20,make a payment from my checking account,make a payment from my checking account,IVR-05-20,make_payment,make_payment,1,1,0,0.0,1,1.968939185142517
+clean,IVR-06-04,check my last payment,check my last payment,IVR-06-04,payment_status,payment_history,0,0,0,0.0,1,2.378166675567627
+clean,IVR-06-12,payment status please,payment status please,IVR-06-12,payment_status,payment_status,1,1,0,0.0,1,0.6843228936195374
+clean,IVR-07-19,what are my latest payments,what are my latest payments,IVR-07-19,payment_history,recent_transactions,0,0,0,0.0,1,0.7149558663368225
+clean,IVR-07-20,show prior payments,show prior payments,IVR-07-20,payment_history,payment_history,1,1,0,0.0,1,0.9018242359161376
+clean,IVR-08-13,please cancel the pending payment,please cancel the pending payment,IVR-08-13,cancel_payment,cancel_payment,1,1,0,0.0,1,3.144972324371338
+clean,IVR-08-16,don't make the payment on Friday,don't make the payment on Friday,IVR-08-16,cancel_payment,make_payment,0,0,0,0.0,1,3.245413303375244
+clean,IVR-09-04,move the scheduled payment to August twentieth,move the scheduled payment to August twentieth,IVR-09-04,change_payment_date,change_payment_date,1,1,0,0.0,1,2.123718738555908
+clean,IVR-09-11,change the scheduled date,change the scheduled date,IVR-09-11,change_payment_date,change_payment_date,1,1,0,0.0,1,1.4218119382858276
+clean,IVR-10-05,automatically pay my bill every month,what is my interest rate,IVR-28-01,autopay_enroll,interest_rate,0,0,0,0.8333333333333334,0,3.6097352504730233
+clean,IVR-10-15,I want to use autopay,I want to use autopay,IVR-10-15,autopay_enroll,autopay_cancel,0,0,0,0.0,1,2.040804862976074
+clean,IVR-11-06,do not pay automatically,do not pay automatically,IVR-11-06,autopay_cancel,autopay_enroll,0,0,0,0.0,1,1.7835572957992554
+clean,IVR-11-20,cancel my automatic payments,cancel my automatic payments,IVR-11-20,autopay_cancel,autopay_cancel,1,1,0,0.0,1,1.7551753520965576
+clean,IVR-12-09,how much credit do I have in total,how much credit do I have in total,IVR-12-09,credit_limit,available_credit,0,0,0,0.0,1,3.215569019317627
+clean,IVR-12-13,credit limit please,credit limit please,IVR-12-13,credit_limit,credit_limit,1,1,0,0.0,1,0.5043764710426331
+clean,IVR-13-13,tell me what I can still spend,tell me what I can still spend,IVR-13-13,available_credit,available_credit,1,1,0,0.0,1,3.7434840202331534
+clean,IVR-13-16,what's my remaining card availability,what's my remaining card availability,IVR-13-16,available_credit,available_credit,1,1,0,0.0,1,2.913503170013428
+clean,IVR-14-05,increase my limit to ten thousand dollars,increase my limit to ten thousand dollars,IVR-14-05,credit_limit_increase,credit_limit_increase,1,1,0,0.0,1,2.2697577476501465
+clean,IVR-14-11,increase my available credit line,increase my available credit line,IVR-14-11,credit_limit_increase,available_credit,0,0,0,0.0,1,3.376134395599365
+clean,IVR-15-06,I want to activate my credit card,I want to activate my credit card,IVR-15-06,card_activation,card_activation,1,1,0,0.0,1,2.0393588542938232
+clean,IVR-15-09,my new card arrived and I need to activate it,my new card arrived and I need to activate it,IVR-15-09,card_activation,card_activation,1,1,0,0.0,1,2.6600899696350098
+clean,IVR-16-04,stop my card from being used,stop my card from being used,IVR-16-04,lock_card,unlock_card,0,0,0,0.0,1,2.571232318878174
+clean,IVR-16-18,freeze my account card,freeze my account card,IVR-16-18,lock_card,lock_card,1,1,0,0.0,1,1.657425045967102
+clean,IVR-17-03,turn my card back on,turn my card back on,IVR-17-03,unlock_card,unlock_card,1,1,0,0.0,1,3.1490366458892822
+clean,IVR-17-17,enable purchases again,the card is missing,IVR-18-20,unlock_card,lost_card,1,0,1,1.3333333333333333,0,3.059144258499145
+clean,IVR-18-15,my physical card is missing,my physical card is missing,IVR-18-15,lost_card,lost_card,1,1,0,0.0,1,2.4311039447784424
+clean,IVR-18-20,the card is missing,the card is missing,IVR-18-20,lost_card,lost_card,1,1,0,0.0,1,1.5383940935134888
+clean,IVR-19-01,my card was stolen,my card was stolen,IVR-19-01,stolen_card,stolen_card,1,1,0,0.0,1,2.404433488845825
+clean,IVR-19-03,report a stolen card,replace my broken card,IVR-23-16,stolen_card,replace_card,1,0,1,0.75,0,2.0248944759368896
+clean,IVR-20-17,I did not approve this purchase,I did not approve this purchase,IVR-20-17,fraud_report,fraud_report,1,1,0,0.0,1,1.92965030670166
+clean,IVR-20-19,I need to report card fraud,I need to report card fraud,IVR-20-19,fraud_report,stolen_card,0,0,0,0.0,1,2.037037134170532
+clean,IVR-21-14,dispute a charge from yesterday,dispute a charge from yesterday,IVR-21-14,dispute_transaction,dispute_transaction,1,1,0,0.0,1,1.506213903427124
+clean,IVR-21-18,dispute my latest purchase,dispute my latest purchase,IVR-21-18,dispute_transaction,dispute_transaction,1,1,0,0.0,1,0.9413370490074158
+clean,IVR-22-10,my purchase keeps getting declined,my purchase keeps getting declined,IVR-22-10,declined_transaction,declined_transaction,1,1,0,0.0,1,2.086005687713623
+clean,IVR-22-20,check why my transaction was declined,check why my transaction was declined,IVR-22-20,declined_transaction,declined_transaction,1,1,0,0.0,1,2.052297353744507
+clean,IVR-23-12,replace the physical card,replace the physical card,IVR-23-12,replace_card,replace_card,1,1,0,0.0,1,1.6284164190292358
+clean,IVR-23-16,replace my broken card,replace my broken card,IVR-23-16,replace_card,replace_card,1,1,0,0.0,1,0.7662230134010315
+clean,IVR-24-08,I need a new pin,the card is missing,IVR-18-20,pin_help,lost_card,1,0,1,1.0,0,2.791622400283813
+clean,IVR-24-20,I need help resetting the pin,my physical card is missing,IVR-18-15,pin_help,lost_card,1,0,1,1.0,0,3.826353073120117
+clean,IVR-25-04,tell the bank I'm traveling,tell the bank I'm traveling,IVR-25-04,travel_notice,travel_notice,1,1,0,0.0,1,2.6118526458740234
+clean,IVR-25-12,add a trip to Italy for next week,add a trip to Italy for next week,IVR-25-12,travel_notice,travel_notice,1,1,0,0.0,1,1.579537034034729
+clean,IVR-26-06,change where my statements are mailed,change where my statements are mailed,IVR-26-06,update_address,recent_transactions,0,0,0,0.0,1,1.821873903274536
+clean,IVR-26-20,use my new home address,use my new home address,IVR-26-20,update_address,update_address,1,1,0,0.0,1,3.059696674346924
+clean,IVR-27-10,show my billing statement,show my billing statement,IVR-27-10,statement_request,statement_request,1,1,0,0.0,1,2.835094690322876
+clean,IVR-27-16,I need an older statement,what is my interest rate,IVR-28-01,statement_request,interest_rate,1,0,1,1.0,0,3.0752573013305664
+clean,IVR-28-01,what is my interest rate,what is my interest rate,IVR-28-01,interest_rate,interest_rate,1,1,0,0.0,1,0.2644339501857757
+clean,IVR-28-08,tell me my card's interest rate,tell me my card's interest rate,IVR-28-08,interest_rate,interest_rate,1,1,0,0.0,1,2.272373914718628
+clean,IVR-29-13,what is this service fee,what is this service fee,IVR-29-13,fee_question,fee_question,1,1,0,0.0,1,0.6237897276878357
+clean,IVR-29-16,what does this fee mean,what does this fee mean,IVR-29-16,fee_question,fee_question,1,1,0,0.0,1,1.9888465404510496
+clean,IVR-30-07,can I speak with an agent,can I speak with an agent,IVR-30-07,speak_to_agent,speak_to_agent,1,1,0,0.0,1,2.994450569152832
+clean,IVR-30-16,can you get me a person,the card is missing,IVR-18-20,speak_to_agent,lost_card,1,0,1,1.0,0,3.9798989295959473
+telephony_8khz,IVR-01-14,what is the outstanding balance,what are my latest payments,IVR-07-19,check_balance,recent_transactions,1,0,1,0.8,0,2.8527956008911133
+telephony_8khz,IVR-01-19,I need the balance amount,I need the balance amount,IVR-01-19,check_balance,check_balance,1,1,0,0.0,1,4.019409656524658
+telephony_8khz,IVR-02-01,show my recent transactions,show my recent transactions,IVR-02-01,recent_transactions,recent_transactions,1,1,0,0.0,1,1.9460108280181885
+telephony_8khz,IVR-02-04,what are my last transactions,what are my last transactions,IVR-02-04,recent_transactions,recent_transactions,1,1,0,0.0,1,2.598616123199463
+telephony_8khz,IVR-03-07,give me my payment deadline,give me my payment deadline,IVR-03-07,payment_due_date,payment_status,0,0,0,0.0,1,2.518380880355835
+telephony_8khz,IVR-03-11,what date is my next payment due,what date is my next payment due,IVR-03-11,payment_due_date,payment_due_date,1,1,0,0.0,1,2.189155578613281
+telephony_8khz,IVR-04-10,minimum payment amount please,minimum payment amount please,IVR-04-10,minimum_payment,minimum_payment,1,1,0,0.0,1,2.732792854309082
+telephony_8khz,IVR-04-16,what's required for the minimum,what's required for the minimum,IVR-04-16,minimum_payment,minimum_payment,1,1,0,0.0,1,3.5760982036590576
+telephony_8khz,IVR-05-11,pay twenty five dollars today,cancel my automatic payments,IVR-11-20,make_payment,autopay_cancel,1,0,1,1.0,0,3.799683332443237
+telephony_8khz,IVR-05-20,make a payment from my checking account,make a payment from my checking account,IVR-05-20,make_payment,make_payment,1,1,0,0.0,1,2.9348695278167725
+telephony_8khz,IVR-06-04,check my last payment,check my last payment,IVR-06-04,payment_status,payment_history,0,0,0,0.0,1,3.1206719875335693
+telephony_8khz,IVR-06-12,payment status please,payment status please,IVR-06-12,payment_status,payment_status,1,1,0,0.0,1,1.8942798376083372
+telephony_8khz,IVR-07-19,what are my latest payments,what are my latest payments,IVR-07-19,payment_history,recent_transactions,0,0,0,0.0,1,1.659296989440918
+telephony_8khz,IVR-07-20,show prior payments,show prior payments,IVR-07-20,payment_history,payment_history,1,1,0,0.0,1,3.3194642066955566
+telephony_8khz,IVR-08-13,please cancel the pending payment,check my last payment,IVR-06-04,cancel_payment,payment_history,1,0,1,0.8,0,3.442490100860596
+telephony_8khz,IVR-08-16,don't make the payment on Friday,don't make the payment on Friday,IVR-08-16,cancel_payment,make_payment,0,0,0,0.0,1,2.8072102069854736
+telephony_8khz,IVR-09-04,move the scheduled payment to August twentieth,move the scheduled payment to August twentieth,IVR-09-04,change_payment_date,change_payment_date,1,1,0,0.0,1,3.1310880184173584
+telephony_8khz,IVR-09-11,change the scheduled date,change the scheduled date,IVR-09-11,change_payment_date,change_payment_date,1,1,0,0.0,1,2.8736486434936523
+telephony_8khz,IVR-10-05,automatically pay my bill every month,replace my broken card,IVR-23-16,autopay_enroll,replace_card,0,0,0,0.8333333333333334,0,3.158040761947632
+telephony_8khz,IVR-10-15,I want to use autopay,I want to use autopay,IVR-10-15,autopay_enroll,autopay_cancel,0,0,0,0.0,1,2.780609130859375
+telephony_8khz,IVR-11-06,do not pay automatically,do not pay automatically,IVR-11-06,autopay_cancel,autopay_enroll,0,0,0,0.0,1,3.0690269470214844
+telephony_8khz,IVR-11-20,cancel my automatic payments,check my last payment,IVR-06-04,autopay_cancel,payment_history,1,0,1,0.75,0,2.676382780075073
+telephony_8khz,IVR-12-09,how much credit do I have in total,what date is my next payment due,IVR-03-11,credit_limit,payment_due_date,0,0,0,1.0,0,3.496099710464477
+telephony_8khz,IVR-12-13,credit limit please,credit limit please,IVR-12-13,credit_limit,credit_limit,1,1,0,0.0,1,1.8355690240859983
+telephony_8khz,IVR-13-13,tell me what I can still spend,report a stolen card,IVR-19-03,available_credit,stolen_card,1,0,1,1.0,0,3.0626139640808105
+telephony_8khz,IVR-13-16,what's my remaining card availability,what are my last transactions,IVR-02-04,available_credit,recent_transactions,1,0,1,1.0,0,2.9850220680236816
+telephony_8khz,IVR-14-05,increase my limit to ten thousand dollars,increase my limit to ten thousand dollars,IVR-14-05,credit_limit_increase,credit_limit_increase,1,1,0,0.0,1,3.013408660888672
+telephony_8khz,IVR-14-11,increase my available credit line,I need the balance amount,IVR-01-19,credit_limit_increase,check_balance,0,0,0,1.0,0,4.009122848510742
+telephony_8khz,IVR-15-06,I want to activate my credit card,I want to activate my credit card,IVR-15-06,card_activation,card_activation,1,1,0,0.0,1,3.5151243209838867
+telephony_8khz,IVR-15-09,my new card arrived and I need to activate it,my new card arrived and I need to activate it,IVR-15-09,card_activation,card_activation,1,1,0,0.0,1,3.635474920272827
+telephony_8khz,IVR-16-04,stop my card from being used,stop my card from being used,IVR-16-04,lock_card,unlock_card,0,0,0,0.0,1,3.6258041858673096
+telephony_8khz,IVR-16-18,freeze my account card,freeze my account card,IVR-16-18,lock_card,lock_card,1,1,0,0.0,1,2.6304380893707275
+telephony_8khz,IVR-17-03,turn my card back on,turn my card back on,IVR-17-03,unlock_card,unlock_card,1,1,0,0.0,1,3.2466697692871094
+telephony_8khz,IVR-17-17,enable purchases again,my card was stolen,IVR-19-01,unlock_card,stolen_card,1,0,1,1.3333333333333333,0,2.451448440551758
+telephony_8khz,IVR-18-15,my physical card is missing,the card is missing,IVR-18-20,lost_card,lost_card,1,1,0,0.4,0,2.5125203132629395
+telephony_8khz,IVR-18-20,the card is missing,the card is missing,IVR-18-20,lost_card,lost_card,1,1,0,0.0,1,1.2235536575317385
+telephony_8khz,IVR-19-01,my card was stolen,my card was stolen,IVR-19-01,stolen_card,stolen_card,1,1,0,0.0,1,2.435572624206543
+telephony_8khz,IVR-19-03,report a stolen card,replace my broken card,IVR-23-16,stolen_card,replace_card,1,0,1,0.75,0,2.5198605060577397
+telephony_8khz,IVR-20-17,I did not approve this purchase,I want to use autopay,IVR-10-15,fraud_report,autopay_cancel,1,0,1,0.8333333333333334,0,3.1777775287628174
+telephony_8khz,IVR-20-19,I need to report card fraud,give me my payment deadline,IVR-03-07,fraud_report,payment_status,0,0,0,1.0,0,4.04230546951294
+telephony_8khz,IVR-21-14,dispute a charge from yesterday,dispute a charge from yesterday,IVR-21-14,dispute_transaction,dispute_transaction,1,1,0,0.0,1,3.334855556488037
+telephony_8khz,IVR-21-18,dispute my latest purchase,dispute my latest purchase,IVR-21-18,dispute_transaction,dispute_transaction,1,1,0,0.0,1,2.582949638366699
+telephony_8khz,IVR-22-10,my purchase keeps getting declined,my purchase keeps getting declined,IVR-22-10,declined_transaction,declined_transaction,1,1,0,0.0,1,3.686369180679321
+telephony_8khz,IVR-22-20,check why my transaction was declined,show my recent transactions,IVR-02-01,declined_transaction,recent_transactions,1,0,1,0.8333333333333334,0,3.459380626678467
+telephony_8khz,IVR-23-12,replace the physical card,replace my broken card,IVR-23-16,replace_card,replace_card,1,1,0,0.5,0,2.3052680492401123
+telephony_8khz,IVR-23-16,replace my broken card,replace my broken card,IVR-23-16,replace_card,replace_card,1,1,0,0.0,1,1.8471171855926516
+telephony_8khz,IVR-24-08,I need a new pin,I need a new pin,IVR-24-08,pin_help,pin_help,1,1,0,0.0,1,3.0308308601379395
+telephony_8khz,IVR-24-20,I need help resetting the pin,my physical card is missing,IVR-18-15,pin_help,lost_card,1,0,1,1.0,0,2.9973483085632324
+telephony_8khz,IVR-25-04,tell the bank I'm traveling,tell the bank I'm traveling,IVR-25-04,travel_notice,travel_notice,1,1,0,0.0,1,2.757237195968628
+telephony_8khz,IVR-25-12,add a trip to Italy for next week,add a trip to Italy for next week,IVR-25-12,travel_notice,travel_notice,1,1,0,0.0,1,3.537742853164673
+telephony_8khz,IVR-26-06,change where my statements are mailed,change where my statements are mailed,IVR-26-06,update_address,recent_transactions,0,0,0,0.0,1,2.7887442111968994
+telephony_8khz,IVR-26-20,use my new home address,give me my payment deadline,IVR-03-07,update_address,payment_status,1,0,1,1.0,0,3.83355450630188
+telephony_8khz,IVR-27-10,show my billing statement,show my billing statement,IVR-27-10,statement_request,statement_request,1,1,0,0.0,1,3.6379992961883545
+telephony_8khz,IVR-27-16,I need an older statement,I need an older statement,IVR-27-16,statement_request,statement_request,1,1,0,0.0,1,3.5062944889068604
+telephony_8khz,IVR-28-01,what is my interest rate,what is my interest rate,IVR-28-01,interest_rate,interest_rate,1,1,0,0.0,1,1.930260181427002
+telephony_8khz,IVR-28-08,tell me my card's interest rate,what is my interest rate,IVR-28-01,interest_rate,interest_rate,1,1,0,0.5,0,3.0547964572906494
+telephony_8khz,IVR-29-13,what is this service fee,what is this service fee,IVR-29-13,fee_question,fee_question,1,1,0,0.0,1,2.6034533977508545
+telephony_8khz,IVR-29-16,what does this fee mean,what does this fee mean,IVR-29-16,fee_question,fee_question,1,1,0,0.0,1,2.552110195159912
+telephony_8khz,IVR-30-07,can I speak with an agent,can I speak with an agent,IVR-30-07,speak_to_agent,speak_to_agent,1,1,0,0.0,1,2.7221462726593018
+telephony_8khz,IVR-30-16,can you get me a person,can you get me a person,IVR-30-16,speak_to_agent,speak_to_agent,1,1,0,0.0,1,4.374525547027588
+noise_15db,IVR-01-14,what is the outstanding balance,what is the outstanding balance,IVR-01-14,check_balance,check_balance,1,1,0,0.0,1,3.830202341079712
+noise_15db,IVR-01-19,I need the balance amount,I want to activate my credit card,IVR-15-06,check_balance,card_activation,1,0,1,1.2,0,4.029048442840576
+noise_15db,IVR-02-01,show my recent transactions,show my recent transactions,IVR-02-01,recent_transactions,recent_transactions,1,1,0,0.0,1,4.254232406616211
+noise_15db,IVR-02-04,what are my last transactions,what are my last transactions,IVR-02-04,recent_transactions,recent_transactions,1,1,0,0.0,1,3.3393454551696777
+noise_15db,IVR-03-07,give me my payment deadline,what date is my next payment due,IVR-03-11,payment_due_date,payment_due_date,0,1,0,1.0,0,3.4629526138305664
+noise_15db,IVR-03-11,what date is my next payment due,what date is my next payment due,IVR-03-11,payment_due_date,payment_due_date,1,1,0,0.0,1,3.153815984725952
+noise_15db,IVR-04-10,minimum payment amount please,I want to activate my credit card,IVR-15-06,minimum_payment,card_activation,1,0,1,1.75,0,3.9968295097351074
+noise_15db,IVR-04-16,what's required for the minimum,what's required for the minimum,IVR-04-16,minimum_payment,minimum_payment,1,1,0,0.0,1,3.1836678981781006
+noise_15db,IVR-05-11,pay twenty five dollars today,how much credit do I have in total,IVR-12-09,make_payment,available_credit,1,0,1,1.6,0,4.286567211151123
+noise_15db,IVR-05-20,make a payment from my checking account,make a payment from my checking account,IVR-05-20,make_payment,make_payment,1,1,0,0.0,1,4.213855743408203
+noise_15db,IVR-06-04,check my last payment,what are my latest payments,IVR-07-19,payment_status,recent_transactions,0,0,0,1.0,0,2.6740756034851074
+noise_15db,IVR-06-12,payment status please,I want to activate my credit card,IVR-15-06,payment_status,card_activation,1,0,1,2.333333333333333,0,4.158250331878662
+noise_15db,IVR-07-19,what are my latest payments,what are my last transactions,IVR-02-04,payment_history,recent_transactions,0,0,0,0.4,0,3.688824653625488
+noise_15db,IVR-07-20,show prior payments,show my recent transactions,IVR-02-01,payment_history,recent_transactions,1,0,1,1.0,0,3.5068554878234863
+noise_15db,IVR-08-13,please cancel the pending payment,please cancel the pending payment,IVR-08-13,cancel_payment,cancel_payment,1,1,0,0.0,1,3.977696657180786
+noise_15db,IVR-08-16,don't make the payment on Friday,don't make the payment on Friday,IVR-08-16,cancel_payment,make_payment,0,0,0,0.0,1,4.191747188568115
+noise_15db,IVR-09-04,move the scheduled payment to August twentieth,move the scheduled payment to August twentieth,IVR-09-04,change_payment_date,change_payment_date,1,1,0,0.0,1,4.320463180541992
+noise_15db,IVR-09-11,change the scheduled date,stop my card from being used,IVR-16-04,change_payment_date,unlock_card,1,0,1,1.5,0,3.772078275680542
+noise_15db,IVR-10-05,automatically pay my bill every month,my new card arrived and I need to activate it,IVR-15-09,autopay_enroll,card_activation,0,0,0,1.6666666666666667,0,3.829911708831787
+noise_15db,IVR-10-15,I want to use autopay,I want to use autopay,IVR-10-15,autopay_enroll,autopay_cancel,0,0,0,0.0,1,2.8278043270111084
+noise_15db,IVR-11-06,do not pay automatically,stop my card from being used,IVR-16-04,autopay_cancel,unlock_card,0,0,0,1.5,0,3.919300317764282
+noise_15db,IVR-11-20,cancel my automatic payments,move the scheduled payment to August twentieth,IVR-09-04,autopay_cancel,change_payment_date,1,0,1,1.75,0,4.376297473907471
+noise_15db,IVR-12-09,how much credit do I have in total,how much credit do I have in total,IVR-12-09,credit_limit,available_credit,0,0,0,0.0,1,4.259973049163818
+noise_15db,IVR-12-13,credit limit please,what date is my next payment due,IVR-03-11,credit_limit,payment_due_date,1,0,1,2.333333333333333,0,4.419966220855713
+noise_15db,IVR-13-13,tell me what I can still spend,I want to activate my credit card,IVR-15-06,available_credit,card_activation,1,0,1,1.0,0,4.317577838897705
+noise_15db,IVR-13-16,what's my remaining card availability,what's my remaining card availability,IVR-13-16,available_credit,available_credit,1,1,0,0.0,1,3.619851112365722
+noise_15db,IVR-14-05,increase my limit to ten thousand dollars,increase my limit to ten thousand dollars,IVR-14-05,credit_limit_increase,credit_limit_increase,1,1,0,0.0,1,3.803440809249878
+noise_15db,IVR-14-11,increase my available credit line,my new card arrived and I need to activate it,IVR-15-09,credit_limit_increase,card_activation,0,0,0,2.0,0,4.022152900695801
+noise_15db,IVR-15-06,I want to activate my credit card,I want to activate my credit card,IVR-15-06,card_activation,card_activation,1,1,0,0.0,1,3.86785101890564
+noise_15db,IVR-15-09,my new card arrived and I need to activate it,my new card arrived and I need to activate it,IVR-15-09,card_activation,card_activation,1,1,0,0.0,1,2.9402050971984863
+noise_15db,IVR-16-04,stop my card from being used,move the scheduled payment to August twentieth,IVR-09-04,lock_card,change_payment_date,0,0,0,1.1666666666666667,0,4.396340847015381
+noise_15db,IVR-16-18,freeze my account card,I need the balance amount,IVR-01-19,lock_card,check_balance,1,0,1,1.25,0,3.8079543113708496
+noise_15db,IVR-17-03,turn my card back on,turn my card back on,IVR-17-03,unlock_card,unlock_card,1,1,0,0.0,1,3.2723701000213623
+noise_15db,IVR-17-17,enable purchases again,I want to activate my credit card,IVR-15-06,unlock_card,card_activation,1,0,1,2.333333333333333,0,3.5844883918762207
+noise_15db,IVR-18-15,my physical card is missing,my physical card is missing,IVR-18-15,lost_card,lost_card,1,1,0,0.0,1,4.017333030700684
+noise_15db,IVR-18-20,the card is missing,the card is missing,IVR-18-20,lost_card,lost_card,1,1,0,0.0,1,2.7433865070343018
+noise_15db,IVR-19-01,my card was stolen,I need to report card fraud,IVR-20-19,stolen_card,stolen_card,1,1,0,1.5,0,3.890490770339966
+noise_15db,IVR-19-03,report a stolen card,I need to report card fraud,IVR-20-19,stolen_card,stolen_card,1,1,0,1.25,0,3.701420545578003
+noise_15db,IVR-20-17,I did not approve this purchase,move the scheduled payment to August twentieth,IVR-09-04,fraud_report,change_payment_date,1,0,1,1.1666666666666667,0,4.389274597167969
+noise_15db,IVR-20-19,I need to report card fraud,I want to activate my credit card,IVR-15-06,fraud_report,card_activation,0,0,0,0.8333333333333334,0,3.4799201488494877
+noise_15db,IVR-21-14,dispute a charge from yesterday,dispute a charge from yesterday,IVR-21-14,dispute_transaction,dispute_transaction,1,1,0,0.0,1,3.1527910232543945
+noise_15db,IVR-21-18,dispute my latest purchase,I did not approve this purchase,IVR-20-17,dispute_transaction,fraud_report,1,0,1,1.25,0,3.5599353313446045
+noise_15db,IVR-22-10,my purchase keeps getting declined,move the scheduled payment to August twentieth,IVR-09-04,declined_transaction,change_payment_date,1,0,1,1.4,0,4.256598949432373
+noise_15db,IVR-22-20,check why my transaction was declined,check why my transaction was declined,IVR-22-20,declined_transaction,declined_transaction,1,1,0,0.0,1,3.6742594242095943
+noise_15db,IVR-23-12,replace the physical card,what's required for the minimum,IVR-04-16,replace_card,minimum_payment,1,0,1,1.25,0,3.903215169906616
+noise_15db,IVR-23-16,replace my broken card,replace the physical card,IVR-23-12,replace_card,replace_card,1,1,0,0.5,0,3.533989191055298
+noise_15db,IVR-24-08,I need a new pin,give me my payment deadline,IVR-03-07,pin_help,payment_status,1,0,1,1.0,0,3.5754404067993164
+noise_15db,IVR-24-20,I need help resetting the pin,I need help resetting the pin,IVR-24-20,pin_help,pin_help,1,1,0,0.0,1,4.073136329650879
+noise_15db,IVR-25-04,tell the bank I'm traveling,tell the bank I'm traveling,IVR-25-04,travel_notice,travel_notice,1,1,0,0.0,1,4.133121013641357
+noise_15db,IVR-25-12,add a trip to Italy for next week,my new card arrived and I need to activate it,IVR-15-09,travel_notice,card_activation,1,0,1,1.25,0,3.570526361465454
+noise_15db,IVR-26-06,change where my statements are mailed,change where my statements are mailed,IVR-26-06,update_address,recent_transactions,0,0,0,0.0,1,3.606336355209351
+noise_15db,IVR-26-20,use my new home address,tell me my card's interest rate,IVR-28-08,update_address,interest_rate,1,0,1,1.0,0,4.069210052490234
+noise_15db,IVR-27-10,show my billing statement,stop my card from being used,IVR-16-04,statement_request,unlock_card,1,0,1,1.25,0,3.875803470611572
+noise_15db,IVR-27-16,I need an older statement,I need to report card fraud,IVR-20-19,statement_request,stolen_card,1,0,1,0.8,0,3.49460244178772
+noise_15db,IVR-28-01,what is my interest rate,what is my interest rate,IVR-28-01,interest_rate,interest_rate,1,1,0,0.0,1,3.106933355331421
+noise_15db,IVR-28-08,tell me my card's interest rate,tell me my card's interest rate,IVR-28-08,interest_rate,interest_rate,1,1,0,0.0,1,3.8741321563720703
+noise_15db,IVR-29-13,what is this service fee,what are my latest payments,IVR-07-19,fee_question,recent_transactions,1,0,1,0.8,0,3.736377239227295
+noise_15db,IVR-29-16,what does this fee mean,what is this service fee,IVR-29-13,fee_question,fee_question,1,1,0,0.6,0,3.896256685256958
+noise_15db,IVR-30-07,can I speak with an agent,tell me my card's interest rate,IVR-28-08,speak_to_agent,interest_rate,1,0,1,1.0,0,3.413293600082397
+noise_15db,IVR-30-16,can you get me a person,can I speak with an agent,IVR-30-07,speak_to_agent,speak_to_agent,1,1,0,0.8333333333333334,0,3.813157320022583
+noise_5db,IVR-01-14,what is the outstanding balance,what date is my next payment due,IVR-03-11,check_balance,payment_due_date,1,0,1,1.0,0,3.971422433853149
+noise_5db,IVR-01-19,I need the balance amount,I did not approve this purchase,IVR-20-17,check_balance,fraud_report,1,0,1,1.0,0,4.016745567321777
+noise_5db,IVR-02-01,show my recent transactions,check why my transaction was declined,IVR-22-20,recent_transactions,declined_transaction,1,0,1,1.25,0,4.659498691558838
+noise_5db,IVR-02-04,what are my last transactions,move the scheduled payment to August twentieth,IVR-09-04,recent_transactions,change_payment_date,1,0,1,1.4,0,4.260020732879639
+noise_5db,IVR-03-07,give me my payment deadline,what date is my next payment due,IVR-03-11,payment_due_date,payment_due_date,0,1,0,1.0,0,3.9853880405426025
+noise_5db,IVR-03-11,what date is my next payment due,my new card arrived and I need to activate it,IVR-15-09,payment_due_date,card_activation,1,0,1,1.4285714285714286,0,4.452775955200195
+noise_5db,IVR-04-10,minimum payment amount please,I want to activate my credit card,IVR-15-06,minimum_payment,card_activation,1,0,1,1.75,0,4.033658504486084
+noise_5db,IVR-04-16,what's required for the minimum,what date is my next payment due,IVR-03-11,minimum_payment,payment_due_date,1,0,1,1.4,0,3.6321191787719727
+noise_5db,IVR-05-11,pay twenty five dollars today,my new card arrived and I need to activate it,IVR-15-09,make_payment,card_activation,1,0,1,2.0,0,4.279421329498291
+noise_5db,IVR-05-20,make a payment from my checking account,move the scheduled payment to August twentieth,IVR-09-04,make_payment,change_payment_date,1,0,1,1.0,0,4.4403815269470215
+noise_5db,IVR-06-04,check my last payment,stop my card from being used,IVR-16-04,payment_status,unlock_card,0,0,0,1.25,0,4.385084629058838
+noise_5db,IVR-06-12,payment status please,I want to activate my credit card,IVR-15-06,payment_status,card_activation,1,0,1,2.333333333333333,0,4.172045230865479
+noise_5db,IVR-07-19,what are my latest payments,what are my last transactions,IVR-02-04,payment_history,recent_transactions,0,0,0,0.4,0,4.056597232818604
+noise_5db,IVR-07-20,show prior payments,change the scheduled date,IVR-09-11,payment_history,change_payment_date,1,0,1,1.3333333333333333,0,3.985026836395264
+noise_5db,IVR-08-13,please cancel the pending payment,my new card arrived and I need to activate it,IVR-15-09,cancel_payment,card_activation,1,0,1,2.0,0,4.156401634216309
+noise_5db,IVR-08-16,don't make the payment on Friday,what date is my next payment due,IVR-03-11,cancel_payment,payment_due_date,0,0,0,1.1666666666666667,0,3.8961217403411865
+noise_5db,IVR-09-04,move the scheduled payment to August twentieth,my new card arrived and I need to activate it,IVR-15-09,change_payment_date,card_activation,1,0,1,1.2857142857142858,0,4.494134426116943
+noise_5db,IVR-09-11,change the scheduled date,stop my card from being used,IVR-16-04,change_payment_date,unlock_card,1,0,1,1.5,0,3.928553819656372
+noise_5db,IVR-10-05,automatically pay my bill every month,my new card arrived and I need to activate it,IVR-15-09,autopay_enroll,card_activation,0,0,0,1.6666666666666667,0,4.085686206817627
+noise_5db,IVR-10-15,I want to use autopay,what date is my next payment due,IVR-03-11,autopay_enroll,payment_due_date,0,0,0,1.4,0,4.559018611907959
+noise_5db,IVR-11-06,do not pay automatically,what are my last transactions,IVR-02-04,autopay_cancel,recent_transactions,0,0,0,1.25,0,3.4808382987976074
+noise_5db,IVR-11-20,cancel my automatic payments,what are my last transactions,IVR-02-04,autopay_cancel,recent_transactions,1,0,1,1.0,0,4.659295558929443
+noise_5db,IVR-12-09,how much credit do I have in total,my new card arrived and I need to activate it,IVR-15-09,credit_limit,card_activation,0,0,0,1.125,0,4.240803241729736
+noise_5db,IVR-12-13,credit limit please,what does this fee mean,IVR-29-16,credit_limit,fee_question,1,0,1,1.6666666666666667,0,4.098918914794922
+noise_5db,IVR-13-13,tell me what I can still spend,check why my transaction was declined,IVR-22-20,available_credit,declined_transaction,1,0,1,1.0,0,4.111386775970459
+noise_5db,IVR-13-16,what's my remaining card availability,my new card arrived and I need to activate it,IVR-15-09,available_credit,card_activation,1,0,1,1.8,0,3.961005210876465
+noise_5db,IVR-14-05,increase my limit to ten thousand dollars,my new card arrived and I need to activate it,IVR-15-09,credit_limit_increase,card_activation,1,0,1,1.4285714285714286,0,4.423871040344238
+noise_5db,IVR-14-11,increase my available credit line,how much credit do I have in total,IVR-12-09,credit_limit_increase,available_credit,0,0,0,1.6,0,3.979778528213501
+noise_5db,IVR-15-06,I want to activate my credit card,my new card arrived and I need to activate it,IVR-15-09,card_activation,card_activation,1,1,0,1.2857142857142858,0,4.292573928833008
+noise_5db,IVR-15-09,my new card arrived and I need to activate it,my new card arrived and I need to activate it,IVR-15-09,card_activation,card_activation,1,1,0,0.0,1,4.338675498962402
+noise_5db,IVR-16-04,stop my card from being used,show my recent transactions,IVR-02-01,lock_card,recent_transactions,0,0,0,0.8333333333333334,0,3.7866134643554688
+noise_5db,IVR-16-18,freeze my account card,I want to activate my credit card,IVR-15-06,lock_card,card_activation,1,0,1,1.25,0,3.4102771282196045
+noise_5db,IVR-17-03,turn my card back on,give me my payment deadline,IVR-03-07,unlock_card,payment_status,1,0,1,1.0,0,3.468615293502808
+noise_5db,IVR-17-17,enable purchases again,check why my transaction was declined,IVR-22-20,unlock_card,declined_transaction,1,0,1,2.0,0,4.784689903259277
+noise_5db,IVR-18-15,my physical card is missing,my new card arrived and I need to activate it,IVR-15-09,lost_card,card_activation,1,0,1,1.6,0,4.233598709106445
+noise_5db,IVR-18-20,the card is missing,how much credit do I have in total,IVR-12-09,lost_card,available_credit,1,0,1,2.0,0,3.9667601585388175
+noise_5db,IVR-19-01,my card was stolen,what are my last transactions,IVR-02-04,stolen_card,recent_transactions,1,0,1,1.25,0,3.6953513622283936
+noise_5db,IVR-19-03,report a stolen card,show my recent transactions,IVR-02-01,stolen_card,recent_transactions,1,0,1,1.0,0,3.482762098312378
+noise_5db,IVR-20-17,I did not approve this purchase,I did not approve this purchase,IVR-20-17,fraud_report,fraud_report,1,1,0,0.0,1,3.943211793899536
+noise_5db,IVR-20-19,I need to report card fraud,I want to activate my credit card,IVR-15-06,fraud_report,card_activation,0,0,0,0.8333333333333334,0,3.907747745513916
+noise_5db,IVR-21-14,dispute a charge from yesterday,what date is my next payment due,IVR-03-11,dispute_transaction,payment_due_date,1,0,1,1.4,0,3.5959033966064453
+noise_5db,IVR-21-18,dispute my latest purchase,what date is my next payment due,IVR-03-11,dispute_transaction,payment_due_date,1,0,1,1.5,0,3.655218124389648
+noise_5db,IVR-22-10,my purchase keeps getting declined,my new card arrived and I need to activate it,IVR-15-09,declined_transaction,card_activation,1,0,1,1.8,0,4.290470123291016
+noise_5db,IVR-22-20,check why my transaction was declined,check why my transaction was declined,IVR-22-20,declined_transaction,declined_transaction,1,1,0,0.0,1,4.69049882888794
+noise_5db,IVR-23-12,replace the physical card,I want to activate my credit card,IVR-15-06,replace_card,card_activation,1,0,1,1.5,0,3.92730164527893
+noise_5db,IVR-23-16,replace my broken card,I want to activate my credit card,IVR-15-06,replace_card,card_activation,1,0,1,1.25,0,3.909822463989258
+noise_5db,IVR-24-08,I need a new pin,I need the balance amount,IVR-01-19,pin_help,check_balance,1,0,1,0.6,0,4.217021942138672
+noise_5db,IVR-24-20,I need help resetting the pin,I need help resetting the pin,IVR-24-20,pin_help,pin_help,1,1,0,0.0,1,3.7928953170776367
+noise_5db,IVR-25-04,tell the bank I'm traveling,tell me my card's interest rate,IVR-28-08,travel_notice,interest_rate,1,0,1,1.0,0,3.880160331726074
+noise_5db,IVR-25-12,add a trip to Italy for next week,my new card arrived and I need to activate it,IVR-15-09,travel_notice,card_activation,1,0,1,1.25,0,3.611654758453369
+noise_5db,IVR-26-06,change where my statements are mailed,tell me my card's interest rate,IVR-28-08,update_address,interest_rate,0,0,0,0.8333333333333334,0,4.094397068023682
+noise_5db,IVR-26-20,use my new home address,I need to report card fraud,IVR-20-19,update_address,stolen_card,1,0,1,1.2,0,3.6071643829345694
+noise_5db,IVR-27-10,show my billing statement,show my recent transactions,IVR-02-01,statement_request,recent_transactions,1,0,1,0.5,0,4.446450710296631
+noise_5db,IVR-27-16,I need an older statement,I want to activate my credit card,IVR-15-06,statement_request,card_activation,1,0,1,1.2,0,3.458240509033203
+noise_5db,IVR-28-01,what is my interest rate,I want to activate my credit card,IVR-15-06,interest_rate,card_activation,1,0,1,1.2,0,3.7760820388793945
+noise_5db,IVR-28-08,tell me my card's interest rate,my new card arrived and I need to activate it,IVR-15-09,interest_rate,card_activation,1,0,1,1.6666666666666667,0,4.098799705505371
+noise_5db,IVR-29-13,what is this service fee,I want to activate my credit card,IVR-15-06,fee_question,card_activation,1,0,1,1.4,0,4.139966011047363
+noise_5db,IVR-29-16,what does this fee mean,how much credit do I have in total,IVR-12-09,fee_question,available_credit,1,0,1,1.6,0,4.3247785568237305
+noise_5db,IVR-30-07,can I speak with an agent,add a trip to Italy for next week,IVR-25-12,speak_to_agent,travel_notice,1,0,1,1.3333333333333333,0,3.786787033081055
+noise_5db,IVR-30-16,can you get me a person,change where my statements are mailed,IVR-26-06,speak_to_agent,recent_transactions,1,0,1,1.0,0,4.073219299316406
+rate_1_15x,IVR-01-14,what is the outstanding balance,what is my interest rate,IVR-28-01,check_balance,interest_rate,1,0,1,0.6,0,2.8565731048583984
+rate_1_15x,IVR-01-19,I need the balance amount,change the scheduled date,IVR-09-11,check_balance,change_payment_date,1,0,1,0.8,0,3.651010751724243
+rate_1_15x,IVR-02-01,show my recent transactions,show my recent transactions,IVR-02-01,recent_transactions,recent_transactions,1,1,0,0.0,1,2.650688409805298
+rate_1_15x,IVR-02-04,what are my last transactions,what are my last transactions,IVR-02-04,recent_transactions,recent_transactions,1,1,0,0.0,1,2.098959445953369
+rate_1_15x,IVR-03-07,give me my payment deadline,give me my payment deadline,IVR-03-07,payment_due_date,payment_status,0,0,0,0.0,1,3.921130418777466
+rate_1_15x,IVR-03-11,what date is my next payment due,what date is my next payment due,IVR-03-11,payment_due_date,payment_due_date,1,1,0,0.0,1,2.106483459472656
+rate_1_15x,IVR-04-10,minimum payment amount please,payment status please,IVR-06-12,minimum_payment,payment_status,1,0,1,0.5,0,2.739929437637329
+rate_1_15x,IVR-04-16,what's required for the minimum,what's required for the minimum,IVR-04-16,minimum_payment,minimum_payment,1,1,0,0.0,1,3.8582184314727774
+rate_1_15x,IVR-05-11,pay twenty five dollars today,pay twenty five dollars today,IVR-05-11,make_payment,make_payment,1,1,0,0.0,1,3.1984312534332275
+rate_1_15x,IVR-05-20,make a payment from my checking account,I want to activate my credit card,IVR-15-06,make_payment,card_activation,1,0,1,0.8571428571428571,0,2.9112062454223637
+rate_1_15x,IVR-06-04,check my last payment,what is my interest rate,IVR-28-01,payment_status,interest_rate,0,0,0,1.0,0,4.03560209274292
+rate_1_15x,IVR-06-12,payment status please,payment status please,IVR-06-12,payment_status,payment_status,1,1,0,0.0,1,2.2742507457733154
+rate_1_15x,IVR-07-19,what are my latest payments,what are my latest payments,IVR-07-19,payment_history,recent_transactions,0,0,0,0.0,1,2.4433164596557617
+rate_1_15x,IVR-07-20,show prior payments,show prior payments,IVR-07-20,payment_history,payment_history,1,1,0,0.0,1,2.445398330688477
+rate_1_15x,IVR-08-13,please cancel the pending payment,change the scheduled date,IVR-09-11,cancel_payment,change_payment_date,1,0,1,0.8,0,2.822826147079468
+rate_1_15x,IVR-08-16,don't make the payment on Friday,dispute a charge from yesterday,IVR-21-14,cancel_payment,dispute_transaction,0,0,0,1.0,0,3.7796571254730233
+rate_1_15x,IVR-09-04,move the scheduled payment to August twentieth,move the scheduled payment to August twentieth,IVR-09-04,change_payment_date,change_payment_date,1,1,0,0.0,1,3.7248477935791016
+rate_1_15x,IVR-09-11,change the scheduled date,change the scheduled date,IVR-09-11,change_payment_date,change_payment_date,1,1,0,0.0,1,2.855161428451538
+rate_1_15x,IVR-10-05,automatically pay my bill every month,replace the physical card,IVR-23-12,autopay_enroll,replace_card,0,0,0,1.0,0,3.1701748371124268
+rate_1_15x,IVR-10-15,I want to use autopay,I want to use autopay,IVR-10-15,autopay_enroll,autopay_cancel,0,0,0,0.0,1,4.139078617095947
+rate_1_15x,IVR-11-06,do not pay automatically,do not pay automatically,IVR-11-06,autopay_cancel,autopay_enroll,0,0,0,0.0,1,4.133549213409424
+rate_1_15x,IVR-11-20,cancel my automatic payments,cancel my automatic payments,IVR-11-20,autopay_cancel,autopay_cancel,1,1,0,0.0,1,3.2202727794647217
+rate_1_15x,IVR-12-09,how much credit do I have in total,how much credit do I have in total,IVR-12-09,credit_limit,available_credit,0,0,0,0.0,1,3.2198312282562256
+rate_1_15x,IVR-12-13,credit limit please,credit limit please,IVR-12-13,credit_limit,credit_limit,1,1,0,0.0,1,1.9849056005477903
+rate_1_15x,IVR-13-13,tell me what I can still spend,report a stolen card,IVR-19-03,available_credit,stolen_card,1,0,1,1.0,0,3.873925685882568
+rate_1_15x,IVR-13-16,what's my remaining card availability,what are my last transactions,IVR-02-04,available_credit,recent_transactions,1,0,1,1.0,0,3.002256393432617
+rate_1_15x,IVR-14-05,increase my limit to ten thousand dollars,I want to activate my credit card,IVR-15-06,credit_limit_increase,card_activation,1,0,1,1.0,0,3.7861649990081783
+rate_1_15x,IVR-14-11,increase my available credit line,what is my interest rate,IVR-28-01,credit_limit_increase,interest_rate,0,0,0,1.0,0,4.011132717132568
+rate_1_15x,IVR-15-06,I want to activate my credit card,I want to activate my credit card,IVR-15-06,card_activation,card_activation,1,1,0,0.0,1,2.736872673034668
+rate_1_15x,IVR-15-09,my new card arrived and I need to activate it,my new card arrived and I need to activate it,IVR-15-09,card_activation,card_activation,1,1,0,0.0,1,3.944880962371826
+rate_1_15x,IVR-16-04,stop my card from being used,stop my card from being used,IVR-16-04,lock_card,unlock_card,0,0,0,0.0,1,3.9272232055664062
+rate_1_15x,IVR-16-18,freeze my account card,freeze my account card,IVR-16-18,lock_card,lock_card,1,1,0,0.0,1,1.9602875709533687
+rate_1_15x,IVR-17-03,turn my card back on,turn my card back on,IVR-17-03,unlock_card,unlock_card,1,1,0,0.0,1,3.8109402656555176
+rate_1_15x,IVR-17-17,enable purchases again,my card was stolen,IVR-19-01,unlock_card,stolen_card,1,0,1,1.3333333333333333,0,3.662886381149292
+rate_1_15x,IVR-18-15,my physical card is missing,the card is missing,IVR-18-20,lost_card,lost_card,1,1,0,0.4,0,2.759225845336914
+rate_1_15x,IVR-18-20,the card is missing,the card is missing,IVR-18-20,lost_card,lost_card,1,1,0,0.0,1,2.7497386932373047
+rate_1_15x,IVR-19-01,my card was stolen,my card was stolen,IVR-19-01,stolen_card,stolen_card,1,1,0,0.0,1,3.423845052719116
+rate_1_15x,IVR-19-03,report a stolen card,report a stolen card,IVR-19-03,stolen_card,stolen_card,1,1,0,0.0,1,2.5258023738861084
+rate_1_15x,IVR-20-17,I did not approve this purchase,I did not approve this purchase,IVR-20-17,fraud_report,fraud_report,1,1,0,0.0,1,3.552854537963867
+rate_1_15x,IVR-20-19,I need to report card fraud,I need to report card fraud,IVR-20-19,fraud_report,stolen_card,0,0,0,0.0,1,2.8822667598724365
+rate_1_15x,IVR-21-14,dispute a charge from yesterday,dispute a charge from yesterday,IVR-21-14,dispute_transaction,dispute_transaction,1,1,0,0.0,1,2.9985835552215576
+rate_1_15x,IVR-21-18,dispute my latest purchase,payment status please,IVR-06-12,dispute_transaction,payment_status,1,0,1,1.0,0,3.532490968704224
+rate_1_15x,IVR-22-10,my purchase keeps getting declined,I need to report card fraud,IVR-20-19,declined_transaction,stolen_card,1,0,1,1.2,0,3.997308254241944
+rate_1_15x,IVR-22-20,check why my transaction was declined,tell me what I can still spend,IVR-13-13,declined_transaction,available_credit,1,0,1,1.1666666666666667,0,4.0542426109313965
+rate_1_15x,IVR-23-12,replace the physical card,replace my broken card,IVR-23-16,replace_card,replace_card,1,1,0,0.5,0,1.8177294731140137
+rate_1_15x,IVR-23-16,replace my broken card,replace my broken card,IVR-23-16,replace_card,replace_card,1,1,0,0.0,1,1.5867193937301636
+rate_1_15x,IVR-24-08,I need a new pin,my card was stolen,IVR-19-01,pin_help,stolen_card,1,0,1,1.0,0,3.7286198139190674
+rate_1_15x,IVR-24-20,I need help resetting the pin,my card was stolen,IVR-19-01,pin_help,stolen_card,1,0,1,1.0,0,4.2053542137146
+rate_1_15x,IVR-25-04,tell the bank I'm traveling,the card is missing,IVR-18-20,travel_notice,lost_card,1,0,1,0.8,0,2.4967432022094727
+rate_1_15x,IVR-25-12,add a trip to Italy for next week,add a trip to Italy for next week,IVR-25-12,travel_notice,travel_notice,1,1,0,0.0,1,2.922342538833618
+rate_1_15x,IVR-26-06,change where my statements are mailed,tell me what I can still spend,IVR-13-13,update_address,available_credit,0,0,0,1.1666666666666667,0,3.3261964321136475
+rate_1_15x,IVR-26-20,use my new home address,use my new home address,IVR-26-20,update_address,update_address,1,1,0,0.0,1,3.3713650703430176
+rate_1_15x,IVR-27-10,show my billing statement,change the scheduled date,IVR-09-11,statement_request,change_payment_date,1,0,1,1.0,0,3.75661563873291
+rate_1_15x,IVR-27-16,I need an older statement,change the scheduled date,IVR-09-11,statement_request,change_payment_date,1,0,1,1.0,0,3.212528705596924
+rate_1_15x,IVR-28-01,what is my interest rate,what is my interest rate,IVR-28-01,interest_rate,interest_rate,1,1,0,0.0,1,1.470280647277832
+rate_1_15x,IVR-28-08,tell me my card's interest rate,tell me my card's interest rate,IVR-28-08,interest_rate,interest_rate,1,1,0,0.0,1,2.8408985137939453
+rate_1_15x,IVR-29-13,what is this service fee,what does this fee mean,IVR-29-16,fee_question,fee_question,1,1,0,0.6,0,3.00443172454834
+rate_1_15x,IVR-29-16,what does this fee mean,what does this fee mean,IVR-29-16,fee_question,fee_question,1,1,0,0.0,1,2.7204184532165527
+rate_1_15x,IVR-30-07,can I speak with an agent,change the scheduled date,IVR-09-11,speak_to_agent,change_payment_date,1,0,1,1.0,0,3.733769416809082
+rate_1_15x,IVR-30-16,can you get me a person,my card was stolen,IVR-19-01,speak_to_agent,stolen_card,1,0,1,1.0,0,4.3618483543396
+telephony_8khz_noise_15db,IVR-01-14,what is the outstanding balance,move the scheduled payment to August twentieth,IVR-09-04,check_balance,change_payment_date,1,0,1,1.4,0,4.430729866027832
+telephony_8khz_noise_15db,IVR-01-19,I need the balance amount,I want to activate my credit card,IVR-15-06,check_balance,card_activation,1,0,1,1.2,0,4.450801372528076
+telephony_8khz_noise_15db,IVR-02-01,show my recent transactions,my new card arrived and I need to activate it,IVR-15-09,recent_transactions,card_activation,1,0,1,2.5,0,4.736701011657715
+telephony_8khz_noise_15db,IVR-02-04,what are my last transactions,give me my payment deadline,IVR-03-07,recent_transactions,payment_status,1,0,1,0.8,0,3.86962628364563
+telephony_8khz_noise_15db,IVR-03-07,give me my payment deadline,give me my payment deadline,IVR-03-07,payment_due_date,payment_status,0,0,0,0.0,1,3.659604072570801
+telephony_8khz_noise_15db,IVR-03-11,what date is my next payment due,what date is my next payment due,IVR-03-11,payment_due_date,payment_due_date,1,1,0,0.0,1,4.094690322875977
+telephony_8khz_noise_15db,IVR-04-10,minimum payment amount please,change where my statements are mailed,IVR-26-06,minimum_payment,recent_transactions,1,0,1,1.5,0,4.191502094268799
+telephony_8khz_noise_15db,IVR-04-16,what's required for the minimum,how much credit do I have in total,IVR-12-09,minimum_payment,available_credit,1,0,1,1.6,0,4.72639274597168
+telephony_8khz_noise_15db,IVR-05-11,pay twenty five dollars today,my new card arrived and I need to activate it,IVR-15-09,make_payment,card_activation,1,0,1,2.0,0,4.157004356384277
+telephony_8khz_noise_15db,IVR-05-20,make a payment from my checking account,my new card arrived and I need to activate it,IVR-15-09,make_payment,card_activation,1,0,1,1.4285714285714286,0,3.789900779724121
+telephony_8khz_noise_15db,IVR-06-04,check my last payment,what are my last transactions,IVR-02-04,payment_status,recent_transactions,0,0,0,0.75,0,3.803539752960205
+telephony_8khz_noise_15db,IVR-06-12,payment status please,can I speak with an agent,IVR-30-07,payment_status,speak_to_agent,1,0,1,2.0,0,4.235785961151123
+telephony_8khz_noise_15db,IVR-07-19,what are my latest payments,what are my last transactions,IVR-02-04,payment_history,recent_transactions,0,0,0,0.4,0,3.3509867191314697
+telephony_8khz_noise_15db,IVR-07-20,show prior payments,show my recent transactions,IVR-02-01,payment_history,recent_transactions,1,0,1,1.0,0,3.89083194732666
+telephony_8khz_noise_15db,IVR-08-13,please cancel the pending payment,my new card arrived and I need to activate it,IVR-15-09,cancel_payment,card_activation,1,0,1,2.0,0,4.449979782104492
+telephony_8khz_noise_15db,IVR-08-16,don't make the payment on Friday,my new card arrived and I need to activate it,IVR-15-09,cancel_payment,card_activation,0,0,0,1.6666666666666667,0,3.50148868560791
+telephony_8khz_noise_15db,IVR-09-04,move the scheduled payment to August twentieth,my new card arrived and I need to activate it,IVR-15-09,change_payment_date,card_activation,1,0,1,1.2857142857142858,0,4.790009498596191
+telephony_8khz_noise_15db,IVR-09-11,change the scheduled date,my physical card is missing,IVR-18-15,change_payment_date,lost_card,1,0,1,1.25,0,4.128929615020752
+telephony_8khz_noise_15db,IVR-10-05,automatically pay my bill every month,my new card arrived and I need to activate it,IVR-15-09,autopay_enroll,card_activation,0,0,0,1.6666666666666667,0,4.036506652832031
+telephony_8khz_noise_15db,IVR-10-15,I want to use autopay,make a payment from my checking account,IVR-05-20,autopay_enroll,make_payment,0,0,0,1.4,0,4.245877265930176
+telephony_8khz_noise_15db,IVR-11-06,do not pay automatically,do not pay automatically,IVR-11-06,autopay_cancel,autopay_enroll,0,0,0,0.0,1,4.401518821716309
+telephony_8khz_noise_15db,IVR-11-20,cancel my automatic payments,move the scheduled payment to August twentieth,IVR-09-04,autopay_cancel,change_payment_date,1,0,1,1.75,0,4.59988260269165
+telephony_8khz_noise_15db,IVR-12-09,how much credit do I have in total,how much credit do I have in total,IVR-12-09,credit_limit,available_credit,0,0,0,0.0,1,4.278610229492188
+telephony_8khz_noise_15db,IVR-12-13,credit limit please,change where my statements are mailed,IVR-26-06,credit_limit,recent_transactions,1,0,1,2.0,0,4.002556800842285
+telephony_8khz_noise_15db,IVR-13-13,tell me what I can still spend,my new card arrived and I need to activate it,IVR-15-09,available_credit,card_activation,1,0,1,1.2857142857142858,0,4.162787437438965
+telephony_8khz_noise_15db,IVR-13-16,what's my remaining card availability,what's my remaining card availability,IVR-13-16,available_credit,available_credit,1,1,0,0.0,1,4.4058356285095215
+telephony_8khz_noise_15db,IVR-14-05,increase my limit to ten thousand dollars,what's my remaining card availability,IVR-13-16,credit_limit_increase,available_credit,1,0,1,0.8571428571428571,0,4.170380592346191
+telephony_8khz_noise_15db,IVR-14-11,increase my available credit line,my new card arrived and I need to activate it,IVR-15-09,credit_limit_increase,card_activation,0,0,0,2.0,0,4.34083366394043
+telephony_8khz_noise_15db,IVR-15-06,I want to activate my credit card,I want to activate my credit card,IVR-15-06,card_activation,card_activation,1,1,0,0.0,1,4.365634918212891
+telephony_8khz_noise_15db,IVR-15-09,my new card arrived and I need to activate it,my new card arrived and I need to activate it,IVR-15-09,card_activation,card_activation,1,1,0,0.0,1,3.360716819763184
+telephony_8khz_noise_15db,IVR-16-04,stop my card from being used,stop my card from being used,IVR-16-04,lock_card,unlock_card,0,0,0,0.0,1,4.149327278137207
+telephony_8khz_noise_15db,IVR-16-18,freeze my account card,what's required for the minimum,IVR-04-16,lock_card,minimum_payment,1,0,1,1.25,0,4.0932393074035645
+telephony_8khz_noise_15db,IVR-17-03,turn my card back on,give me my payment deadline,IVR-03-07,unlock_card,payment_status,1,0,1,1.0,0,4.196798801422119
+telephony_8khz_noise_15db,IVR-17-17,enable purchases again,move the scheduled payment to August twentieth,IVR-09-04,unlock_card,change_payment_date,1,0,1,2.333333333333333,0,4.272027492523193
+telephony_8khz_noise_15db,IVR-18-15,my physical card is missing,my physical card is missing,IVR-18-15,lost_card,lost_card,1,1,0,0.0,1,4.628763198852539
+telephony_8khz_noise_15db,IVR-18-20,the card is missing,what are my last transactions,IVR-02-04,lost_card,recent_transactions,1,0,1,1.25,0,3.7631149291992183
+telephony_8khz_noise_15db,IVR-19-01,my card was stolen,I need to report card fraud,IVR-20-19,stolen_card,stolen_card,1,1,0,1.5,0,4.046385288238525
+telephony_8khz_noise_15db,IVR-19-03,report a stolen card,I want to activate my credit card,IVR-15-06,stolen_card,card_activation,1,0,1,1.5,0,3.480646133422852
+telephony_8khz_noise_15db,IVR-20-17,I did not approve this purchase,change where my statements are mailed,IVR-26-06,fraud_report,recent_transactions,1,0,1,1.0,0,3.849081516265869
+telephony_8khz_noise_15db,IVR-20-19,I need to report card fraud,I want to activate my credit card,IVR-15-06,fraud_report,card_activation,0,0,0,0.8333333333333334,0,3.779400587081909
+telephony_8khz_noise_15db,IVR-21-14,dispute a charge from yesterday,what date is my next payment due,IVR-03-11,dispute_transaction,payment_due_date,1,0,1,1.4,0,3.143683195114136
+telephony_8khz_noise_15db,IVR-21-18,dispute my latest purchase,what date is my next payment due,IVR-03-11,dispute_transaction,payment_due_date,1,0,1,1.5,0,3.825562953948975
+telephony_8khz_noise_15db,IVR-22-10,my purchase keeps getting declined,my new card arrived and I need to activate it,IVR-15-09,declined_transaction,card_activation,1,0,1,1.8,0,4.026258945465088
+telephony_8khz_noise_15db,IVR-22-20,check why my transaction was declined,check why my transaction was declined,IVR-22-20,declined_transaction,declined_transaction,1,1,0,0.0,1,4.113296508789063
+telephony_8khz_noise_15db,IVR-23-12,replace the physical card,how much credit do I have in total,IVR-12-09,replace_card,available_credit,1,0,1,2.0,0,4.047530174255371
+telephony_8khz_noise_15db,IVR-23-16,replace my broken card,stop my card from being used,IVR-16-04,replace_card,unlock_card,1,0,1,1.25,0,3.3483147621154785
+telephony_8khz_noise_15db,IVR-24-08,I need a new pin,I need a new pin,IVR-24-08,pin_help,pin_help,1,1,0,0.0,1,4.258551597595215
+telephony_8khz_noise_15db,IVR-24-20,I need help resetting the pin,my new card arrived and I need to activate it,IVR-15-09,pin_help,card_activation,1,0,1,1.5,0,4.285834789276123
+telephony_8khz_noise_15db,IVR-25-04,tell the bank I'm traveling,what date is my next payment due,IVR-03-11,travel_notice,payment_due_date,1,0,1,1.4,0,3.994498491287232
+telephony_8khz_noise_15db,IVR-25-12,add a trip to Italy for next week,my new card arrived and I need to activate it,IVR-15-09,travel_notice,card_activation,1,0,1,1.25,0,4.115730285644531
+telephony_8khz_noise_15db,IVR-26-06,change where my statements are mailed,how much credit do I have in total,IVR-12-09,update_address,available_credit,0,0,0,1.3333333333333333,0,4.387386322021484
+telephony_8khz_noise_15db,IVR-26-20,use my new home address,what are my last transactions,IVR-02-04,update_address,recent_transactions,1,0,1,1.0,0,4.148336887359619
+telephony_8khz_noise_15db,IVR-27-10,show my billing statement,what are my last transactions,IVR-02-04,statement_request,recent_transactions,1,0,1,1.0,0,4.03279972076416
+telephony_8khz_noise_15db,IVR-27-16,I need an older statement,the card is missing,IVR-18-20,statement_request,lost_card,1,0,1,1.0,0,3.97894287109375
+telephony_8khz_noise_15db,IVR-28-01,what is my interest rate,what are my last transactions,IVR-02-04,interest_rate,recent_transactions,1,0,1,0.6,0,4.029162883758545
+telephony_8khz_noise_15db,IVR-28-08,tell me my card's interest rate,my new card arrived and I need to activate it,IVR-15-09,interest_rate,card_activation,1,0,1,1.6666666666666667,0,4.181313991546631
+telephony_8khz_noise_15db,IVR-29-13,what is this service fee,what are my latest payments,IVR-07-19,fee_question,recent_transactions,1,0,1,0.8,0,3.219634532928467
+telephony_8khz_noise_15db,IVR-29-16,what does this fee mean,what date is my next payment due,IVR-03-11,fee_question,payment_due_date,1,0,1,1.2,0,4.352099895477295
+telephony_8khz_noise_15db,IVR-30-07,can I speak with an agent,move the scheduled payment to August twentieth,IVR-09-04,speak_to_agent,change_payment_date,1,0,1,1.1666666666666667,0,4.897622585296631
+telephony_8khz_noise_15db,IVR-30-16,can you get me a person,my physical card is missing,IVR-18-15,speak_to_agent,lost_card,1,0,1,1.0,0,3.585017204284668
