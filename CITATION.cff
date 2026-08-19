@@ -1,11 +1,13 @@
 cff-version: 1.2.0
 title: "CAFA-IVR: Counterfactual ASR Failure Attribution for Conversational IVR"
-message: "If you use CAFA-IVR, cite the specification version and the associated paper when available."
+message: "If you use CAFA-IVR, cite this software release and the associated paper when available."
 type: software
 authors:
   - family-names: Sridharan
     given-names: Vijay Kumar
     affiliation: "IEEE Senior Member, Frisco, TX, USA"
 version: 1.0.0
-date-released: 2026-08-18
+date-released: 2026-08-19
 license: Apache-2.0
+repository-code: "https://github.com/sridharanvijaykumar/cafa-ivr"
+url: "https://github.com/sridharanvijaykumar/cafa-ivr"

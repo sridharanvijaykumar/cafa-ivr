@@ -22,3 +22,9 @@ dev = ["pytest>=8"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[project.urls]
+Homepage = "https://github.com/sridharanvijaykumar/cafa-ivr"
+Repository = "https://github.com/sridharanvijaykumar/cafa-ivr"
+Documentation = "https://github.com/sridharanvijaykumar/cafa-ivr/tree/main/docs"
+Issues = "https://github.com/sridharanvijaykumar/cafa-ivr/issues"

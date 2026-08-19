@@ -1,23 +1,37 @@
-name: CAFA-IVR voice regression
+name: CAFA-IVR CI
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [main]
   pull_request:
+  workflow_dispatch:
 
 jobs:
-  cafa-regression:
+  test-and-reproduce:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install -e .
-      # Replace this step with the organization's real audio/ASR/NLU runner.
-      - run: cafa-ivr score --input candidate_trials.csv --out candidate
-      - run: |
-          cafa-ivr compare \
-            --baseline approved_baseline/summary.csv \
-            --candidate candidate/summary.csv \
-            --max-asr-ifr-delta 0.02 \
-            --max-ceer-delta 0.01
+
+      - name: Install CAFA-IVR and test dependencies
+        run: pip install -e '.[dev]'
+
+      - name: Run unit and empirical reproduction tests
+        run: pytest -q
+
+      - name: Smoke-test CLI on measured 360-trial input
+        run: |
+          cafa-ivr score \
+            --input empirical/conformer_360_cafa_input.csv \
+            --out ci_reproduced
+
+      - name: Upload reproduced results
+        uses: actions/upload-artifact@v4
+        with:
+          name: cafa-ivr-reproduced-360
+          path: ci_reproduced/

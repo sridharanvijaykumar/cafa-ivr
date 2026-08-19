@@ -29,7 +29,7 @@ WER remains the standard lexical diagnostic,
 \end{equation}
 where $S$, $D$, and $I$ are substitutions, deletions, and insertions relative to $N$ reference words. However, lexical distance is not an attribution mechanism. Semantic-ASR research has similarly motivated alternatives or complements to pure lexical scoring \cite{kim2021,roy2021}, while spoken-language-understanding studies document downstream degradation under ASR noise \cite{sengupta2021}. Audio/text bot workbenches demonstrate the practicality of multimodal regression testing \cite{awslex}. The remaining operational question is: \emph{did the addition of the speech path cause an otherwise valid semantic test to fail?}
 
-CAFA-IVR makes four contributions: (1) a paired text/audio counterfactual; (2) ASR-IFR; (3) a portable attribution and critical-entity contract suitable for CI/CD; and (4) reproducible real-decoding pilots plus an external human-banking-corpus mapping.
+CAFA-IVR makes four contributions: (1) a paired text/audio counterfactual; (2) ASR-IFR; (3) a portable attribution and critical-entity contract suitable for CI/CD; and (4) reproducible real-decoding pilots plus an external human-banking-corpus mapping. The reference scorer, specification, examples, and empirical artifacts are openly available at \url{https://github.com/sridharanvijaykumar/cafa-ivr}.
 
 \section{CAFA-IVR Framework}
 For semantic case $i$, let $r_i$ be the reference text and $a_i$ its audio realization. CAFA-IVR executes
@@ -38,6 +38,18 @@ T_i &: r_i \rightarrow \mathrm{Downstream},\\
 A_i &: a_i \rightarrow \mathrm{ASR} \rightarrow \mathrm{Downstream}.
 \end{align}
 The downstream model, prompt, tools, dialogue state, and test oracle should be frozen between the two paths. Let $T_i=1$ and $A_i=1$ denote successful semantic outcomes. Table~\ref{tab:attrib} defines the attribution states.
+
+\begin{figure}[t]
+\centering
+\fbox{\begin{minipage}{0.94\columnwidth}
+\centering\footnotesize
+Reference text $r_i$ $\longrightarrow$ Same downstream system $\longrightarrow T_i$\\[1mm]
+Audio $a_i$ $\longrightarrow$ ASR $\longrightarrow$ Same downstream system $\longrightarrow A_i$\\[1mm]
+$(T_i,A_i)$ $\longrightarrow$ Attribution state $\longrightarrow$ WER / CEER / ASR-IFR
+\end{minipage}}
+\caption{CAFA-IVR paired counterfactual execution. Only the audio path introduces ASR; downstream components and the task oracle remain frozen.}
+\label{fig:cafa}
+\end{figure}
 
 \begin{table}[t]
 \caption{CAFA-IVR attribution matrix.}
@@ -59,9 +71,17 @@ Define $F_i=\mathbb{1}(T_i=1\land A_i=0)$. The primary metric is
 \begin{equation}
 \mathrm{ASR\mbox{-}IFR}=\frac{1}{N}\sum_{i=1}^{N}F_i.
 \end{equation}
-Thus ASR-IFR measures the fraction of the complete paired suite converted from a downstream-capable reference-text success to an audio-path failure. A conditional variant can normalize by $\sum_i T_i$.
+Thus ASR-IFR measures the fraction of the complete paired suite converted from a downstream-capable reference-text success to an audio-path failure. For teams that want risk conditioned only on eligible controls, CAFA-IVR additionally reports
+\begin{equation}
+\mathrm{cASR\mbox{-}IFR}=\frac{\sum_i F_i}{\sum_i T_i},
+\end{equation}
+while keeping the all-trial ASR-IFR as the primary release metric.
 
-CAFA-IVR also retains WER and defines Critical-Entity Error Rate (CEER) over governed values such as amounts, dates, negation, authentication values, account types, and high-risk action verbs. Entity normalization occurs before scoring so equivalent surface forms can map to the same value. An optional consequence score (CIER) may be added, but severity weights are deployment policy rather than universal constants.
+CAFA-IVR also retains WER and defines Critical-Entity Error Rate (CEER) over governed values such as amounts, dates, negation, authentication values, account types, and high-risk action verbs. If $C_i$ and $\hat C_i$ are normalized expected and observed critical-entity multisets,
+\begin{equation}
+\mathrm{CEER}=\frac{\sum_i (|C_i\setminus\hat C_i|+|\hat C_i\setminus C_i|)}{\sum_i |C_i|}.
+\end{equation}
+An optional consequence score (CIER) may be added, but severity weights are deployment policy rather than universal constants.
 
 \section{Portable Test and Release Contract}
 The minimum trial record contains a stable test ID, acoustic condition, reference text, ASR transcript, expected/observed semantic outcome, text-control result, audio-path task result, and engine/version metadata. Critical entities and risk tier are recommended for high-consequence journeys.
@@ -90,6 +110,23 @@ A second experiment used a 60-phrase closed IVR grammar (two phrases per intent)
 The V10 test audio was evaluated under the same six conditions, producing 360 actual neural decodes with no condition-specific retraining.
 
 \section{Results}
+Table~\ref{tab:studies} summarizes the two locally executed studies. They validate the same attribution pipeline under different recognizer assumptions and are not presented as an apples-to-apples ASR leaderboard.
+
+\begin{table}[t]
+\caption{Locally executed CAFA-IVR studies.}
+\label{tab:studies}
+\centering\scriptsize
+\begin{tabular}{lrrrr}
+\toprule
+Study & Trials & Text ctrl. & WER & ASR-IFR\\
+ & & Acc. (\%) & (\%) & (\%)\\
+\midrule
+PocketSphinx & 180 & 96.7 & 88.9 & 75.0\\
+Conformer-CTC & 360 & 80.0 & 64.8 & 39.4\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 Table~\ref{tab:neural} reports measured neural results. Clean WER was 11.5\%, exact phrase recognition 88.3\%, downstream intent accuracy 70.0\%, and ASR-IFR 10.0\%. Telephony increased ASR-IFR to 20.0\%, and severe 5-dB noise increased it to 71.7\%. WER can exceed 100\% when total word edits exceed the reference length.
 
 \begin{table}[t]
@@ -113,7 +150,7 @@ Overall & 64.8 & 46.4 & 41.1 & 39.4\\
 \end{tabular}
 \end{table}
 
-Bootstrap 95\% intervals for clean speech were 4.2--20.1\% WER, 58.3--81.7\% intent accuracy, and 3.3--18.3\% ASR-IFR. Across all 360 trials, the corresponding intervals were 57.7--72.1\%, 35.8--46.1\%, and 34.4--44.4\%.
+Nonparametric trial-level bootstrap intervals used 5,000 resamples with a fixed seed. Bootstrap 95\% intervals for clean speech were 4.2--20.1\% WER, 58.3--81.7\% intent accuracy, and 3.3--18.3\% ASR-IFR. Across all 360 trials, the corresponding intervals were 57.7--72.1\%, 35.8--46.1\%, and 34.4--44.4\%. The neural text control passed in 288 of 360 paired trials; 142 were speech-attributable failures, yielding 39.4\% all-trial ASR-IFR and 49.3\% conditional cASR-IFR.
 
 The distinction from WER is visible at trial level. ``my physical card is missing'' became ``the card is missing'' (WER 0.40) while preserving \texttt{lost\_card}. By contrast, ``what are my latest payments'' became ``what are my last transactions'' (WER 0.40), changing \texttt{payment\_history} to \texttt{recent\_transactions}. Equal WER therefore need not imply equal semantic consequence.
 
@@ -125,7 +162,24 @@ The local studies use synthetic speech, so we map the protocol to HarperValleyBa
 \section{Industrial Deployment}
 The research contribution is packaged as a versioned reference specification and scorer rather than only a paper. An adopter supplies trial-level outputs from its existing ASR/NLU stack; the scorer produces attributed trials, condition summaries, and baseline/candidate comparisons. A CI job can fail when organization-defined ASR-IFR or CEER regression limits are crossed. Because the same test schema applies to conventional NLU and generative agents, the framework can be inserted around an existing voice stack without replacing its inference components.
 
-Independent implementation should record the CAFA-IVR version, ASR/downstream versions, test corpus, thresholds, resulting engineering decision, and retained evidence. This makes both successful adoption and negative evaluations independently auditable rather than dependent on the original author.
+\begin{table}[t]
+\caption{Minimum adopter interface.}
+\label{tab:adopt}
+\centering\scriptsize
+\begin{tabular}{p{0.26\columnwidth}p{0.64\columnwidth}}
+\toprule
+Artifact & Purpose\\
+\midrule
+Reference text & Counterfactual control input\\
+Audio + transcript & Speech-path input and lexical diagnostic\\
+Task oracle & Frozen success/failure decision for both paths\\
+Engine metadata & Reproducible ASR/downstream versioning\\
+Baseline summary & Regression comparison in CI/CD\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Independent implementation should record the CAFA-IVR version, ASR/downstream versions, test corpus, thresholds, resulting engineering decision, and retained evidence. This makes both successful adoption and negative evaluations independently auditable rather than dependent on the original author. The open implementation exposes \texttt{score} and \texttt{compare} commands and adapter examples so a team can adopt the attribution contract without changing its ASR vendor or dialogue platform.
 
 \section{Limitations}
 Both locally executed studies use synthetic speech. The neural decoder is closed-set and phrase-overlapping across training/test speakers, so it is an in-domain constrained recognizer rather than a pretrained open-vocabulary benchmark. The 80\% neural text-control accuracy also limits eligible attribution cases. Human-speech multi-engine inference, stronger frozen downstream controls, validated entity normalization, and speaker-level paired statistics are needed before making broader robustness claims.

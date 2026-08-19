@@ -1,5 +1,8 @@
 # CAFA-IVR v1.0
 
+[![CAFA-IVR CI](https://github.com/sridharanvijaykumar/cafa-ivr/actions/workflows/cafa-regression.yml/badge.svg)](https://github.com/sridharanvijaykumar/cafa-ivr/actions/workflows/cafa-regression.yml)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+
 **Counterfactual ASR Failure Attribution for Conversational IVR**
 
 CAFA-IVR is a vendor-neutral testing framework for answering a practical question that Word Error Rate (WER) cannot answer by itself:
@@ -95,6 +98,10 @@ Possible integrations include:
 
 `empirical/` contains the locally measured controlled Conformer-CTC results used in the research manuscript plus public-human-source validation metadata. Synthetic-speech measurements and public-human source validation are deliberately kept separate.
 
+### Evidence boundary
+
+CAFA-IVR is a testing and attribution framework, not an ASR model. The included 360-trial neural pilot uses controlled synthetic speech and a constrained in-domain recognizer; it should **not** be interpreted as a production-ASR benchmark. Public human-banking material is retained as source/provenance validation and is not mixed with locally executed measurements.
+
 ## Adoption
 
 Organizations adopting the framework should record the exact CAFA-IVR version, test scope, engines, thresholds, and change-management decision. `docs/ADOPTION_EVIDENCE_LOG.md` provides a neutral template so independent use is reproducible and auditable.
@@ -128,4 +135,3 @@ reference text ─────────────────────�
 
 Teams can add an adapter under `adapters/`, generate the required trial CSV, run `cafa-ivr score`, and optionally place `cafa-ivr compare` in CI/CD. Independent evaluations are welcome through the adoption-report issue template.
 
-See `GITHUB_PUBLISH_STEPS.md` for repository publishing instructions.
