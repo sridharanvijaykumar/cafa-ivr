@@ -9,4 +9,6 @@ Before publishing a CAFA-IVR release or paper artifact:
 - [x] Specification avoids universal production thresholds.
 - [x] Adoption log distinguishes independent organizational use from author-led testing.
 - [x] Employer/platform references do not imply sponsorship or endorsement.
-- [x] PDF paper and specification rendered and visually checked.
+- [x] PDF paper and specification regenerated from the final LaTeX sources and visually checked.
+- [x] Regenerated `RELEASE_MANIFEST.sha256` with `python scripts/generate_release_manifest.py` after all release edits.
+- [x] Complete test suite passes after manifest regeneration, verifying every listed file and digest.

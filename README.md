@@ -32,8 +32,8 @@ The primary metric is **ASR-IFR (ASR-Attributable Intent Failure Rate)**: the fr
 CAFA-IVR also supports:
 
 - **WER** - lexical transcription fidelity
-- **CEER** - Critical-Entity Error Rate for amounts, dates, negation, actions, etc.
-- **CIER** - optional severity-weighted consequence score
+- **CEER** - Critical-Entity Error Rate for amounts, dates, negation, actions, etc. CEER is an **unbounded normalized error count, not a probability**: it divides critical-entity errors by the number of reference critical entities and may exceed 1.0 when a hypothesis introduces spurious entities, just as WER may exceed 1.0 under heavy insertion.
+- **CIER** - Critical-Impact Error Rate: a severity-weighted **realized-consequence** rate. Each trial with a recognized `impact_level` contributes its severity weight only when the audio-path task failed and contributes zero when it passed; trials without a recognized impact level are excluded. CIER counts realized task failures regardless of attribution. To isolate ASR-attributable consequence, restrict results to `attribution = SPEECH_ATTRIBUTABLE`.
 - condition-level summaries for clean, telephony, noise and speaking-rate tests
 - baseline-vs-candidate regression gates for CI/CD
 
@@ -69,6 +69,10 @@ cafa-ivr score \
   --out measured_out
 ```
 
+### What this release reproduces
+
+This release reproduces **scoring**: it recomputes the reported metrics from the decoded outputs supplied in `empirical/`. It does **not** include the audio-synthesis, ASR-decoding, perturbation, or bootstrap-resampling pipelines and therefore does not regenerate those decoded outputs. The 540 local decodes and the 5,000-sample bootstrap intervals reported in the paper are not reproducible end to end from this tag.
+
 ## CI/CD gate
 
 ```bash
@@ -80,6 +84,7 @@ cafa-ivr compare \
 ```
 
 The default numeric gates are examples for tooling demonstration, not universal acceptance criteria. Production teams should govern their own thresholds by risk tier and historical baseline.
+Every enabled gate requires a present, numeric, finite metric in both summaries and fails closed on invalid input. Datasets without critical-entity annotations must explicitly disable that optional gate with `--no-ceer-gate`.
 
 ## Integration contract
 
@@ -102,13 +107,16 @@ Possible integrations include:
 
 CAFA-IVR is a testing and attribution framework, not an ASR model. The included 360-trial neural pilot uses controlled synthetic speech and a constrained in-domain recognizer; it should **not** be interpreted as a production-ASR benchmark. Public human-banking material is retained as source/provenance validation and is not mixed with locally executed measurements.
 
+The included 360-trial pilot exercises **ASR-IFR** and **WER** only. It carries no critical-entity annotations and no impact labels, so **CEER** and **CIER** are specified and implemented but not exercised by this dataset; the reproduced summary accordingly reports `ceer: null` and `cier: null`.
+
 ## Adoption
 
 Organizations adopting the framework should record the exact CAFA-IVR version, test scope, engines, thresholds, and change-management decision. `docs/ADOPTION_EVIDENCE_LOG.md` provides a neutral template so independent use is reproducible and auditable.
 
-## Research paper
+## Technical manuscript
 
-See `paper/CAFA-IVR_ICASSP2027.pdf` and the LaTeX source in the same folder.
+See `paper/CAFA-IVR.pdf` and `paper/CAFA-IVR.tex`.
+The repository provides this venue-neutral technical manuscript as supporting documentation and does not represent it as accepted or published.
 
 ## License
 
@@ -134,4 +142,3 @@ reference text ─────────────────────�
 ```
 
 Teams can add an adapter under `adapters/`, generate the required trial CSV, run `cafa-ivr score`, and optionally place `cafa-ivr compare` in CI/CD. Independent evaluations are welcome through the adoption-report issue template.
-

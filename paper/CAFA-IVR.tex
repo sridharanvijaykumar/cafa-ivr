@@ -29,7 +29,7 @@ WER remains the standard lexical diagnostic,
 \end{equation}
 where $S$, $D$, and $I$ are substitutions, deletions, and insertions relative to $N$ reference words. However, lexical distance is not an attribution mechanism. Semantic-ASR research has similarly motivated alternatives or complements to pure lexical scoring \cite{kim2021,roy2021}, while spoken-language-understanding studies document downstream degradation under ASR noise \cite{sengupta2021}. Audio/text bot workbenches demonstrate the practicality of multimodal regression testing \cite{awslex}. The remaining operational question is: \emph{did the addition of the speech path cause an otherwise valid semantic test to fail?}
 
-CAFA-IVR makes four contributions: (1) a paired text/audio counterfactual; (2) ASR-IFR; (3) a portable attribution and critical-entity contract suitable for CI/CD; and (4) reproducible real-decoding pilots plus an external human-banking-corpus mapping. The reference scorer, specification, examples, and empirical artifacts are openly available at \url{https://github.com/sridharanvijaykumar/cafa-ivr}.
+CAFA-IVR makes four contributions: (1) a paired text/audio counterfactual; (2) ASR-IFR; (3) a portable attribution and critical-entity contract suitable for CI/CD; and (4) locally executed real-decoding pilots plus an external human-banking-corpus mapping. The reference scorer, specification, examples, and empirical artifacts are openly available at \url{https://github.com/sridharanvijaykumar/cafa-ivr}. The released artifact (v1.0.x, Apache-2.0) reproduces metric computation from the supplied decoded outputs. Audio generation, ASR decoding, perturbation, and bootstrap resampling are not included in this release; reported decode-level and bootstrap results are therefore not reproducible end to end from the artifact alone.
 
 \section{CAFA-IVR Framework}
 For semantic case $i$, let $r_i$ be the reference text and $a_i$ its audio realization. CAFA-IVR executes
@@ -81,7 +81,11 @@ CAFA-IVR also retains WER and defines Critical-Entity Error Rate (CEER) over gov
 \begin{equation}
 \mathrm{CEER}=\frac{\sum_i (|C_i\setminus\hat C_i|+|\hat C_i\setminus C_i|)}{\sum_i |C_i|}.
 \end{equation}
-An optional consequence score (CIER) may be added, but severity weights are deployment policy rather than universal constants.
+An optional realized-consequence score (CIER) may be added. Let $\mathcal{I}$ be the set of trials carrying a recognized impact level, and let $w(L_i)$ be the deployment-selected weight for level $L_i$. Then
+\begin{equation}
+\mathrm{CIER}=\frac{1}{|\mathcal{I}|}\sum_{i\in\mathcal{I}}(1-A_i)w(L_i).
+\end{equation}
+Successful audio-path tasks contribute zero rather than being excluded, while failed tasks contribute their impact weight; CIER is therefore a severity-weighted failure rate over the impact-labelled population rather than an average severity of failures. It counts audio-path failures regardless of attribution. Speech-attributable consequence is obtained by restricting the population to the \texttt{SPEECH\_ATTRIBUTABLE} state. The severity weights remain deployment policy rather than universal constants.
 
 \section{Portable Test and Release Contract}
 The minimum trial record contains a stable test ID, acoustic condition, reference text, ASR transcript, expected/observed semantic outcome, text-control result, audio-path task result, and engine/version metadata. Critical entities and risk tier are recommended for high-consequence journeys.
@@ -155,6 +159,8 @@ Nonparametric trial-level bootstrap intervals used 5,000 resamples with a fixed 
 The distinction from WER is visible at trial level. ``my physical card is missing'' became ``the card is missing'' (WER 0.40) while preserving \texttt{lost\_card}. By contrast, ``what are my latest payments'' became ``what are my last transactions'' (WER 0.40), changing \texttt{payment\_history} to \texttt{recent\_transactions}. Equal WER therefore need not imply equal semantic consequence.
 
 The text counterfactual additionally prevented false ASR attribution. Twelve of the 60 neural reference texts failed the downstream NLU before speech was introduced. Across six conditions, 34 trials had an exact ASR transcript but belonged to those text-control failures; a voice-only dashboard could otherwise direct debugging toward ASR.
+
+The pilot reported here exercises ASR-IFR and WER across six acoustic conditions: clean, telephony at 8 kHz, additive noise at 15 dB and 5 dB, rate 1.15$\times$, and telephony with noise. It does not exercise CEER or CIER. The 360-trial set contains no critical-entity annotations and no impact labels, so both metrics are specified and implemented but not empirically demonstrated in this release. Their evaluation is left to an entity- and impact-annotated subset in future work.
 
 \section{External Human-Speech Mapping}
 The local studies use synthetic speech, so we map the protocol to HarperValleyBank (HVB), a public domain-specific consumer-banking dialogue corpus containing 23.7 hours, 1,446 conversations, 25,730 utterances, 59 speakers, eight task classes, and separate 8-kHz call sides \cite{wu2020hvb}. An online SLUE-HVB sample was frozen across six banking intents with speaker IDs, segment IDs, timestamps, human transcripts, and license/source metadata \cite{shon2022slue2}. This is an external source-validation layer, not a third locally executed ASR experiment: the online audio binaries could not be materialized in the execution environment, so no sample-wide WER or ASR-IFR is claimed. HVB nevertheless supplies the human telephony channel, intent labels, and corrected transcript structure needed by CAFA-IVR without changing the test contract.

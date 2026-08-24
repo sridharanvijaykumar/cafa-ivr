@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from pathlib import Path
 
 from .core import cafa_score_row, grouped_summaries, read_csv, write_csv
@@ -44,29 +45,67 @@ def cmd_score(args):
 
 def _overall(path):
     rows = read_csv(path)
+    if not rows:
+        raise ValueError(f"{path}: summary contains no data rows")
     for r in rows:
         if str(r.get("condition", r.get("group", ""))).upper() == "OVERALL":
             return r
     return rows[-1]
 
 
+def _metric_value(row, metric, source):
+    raw = row.get(metric)
+    if raw in (None, ""):
+        raise ValueError(f"{source}: required metric '{metric}' is missing")
+    try:
+        value = float(raw)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"{source}: required metric '{metric}' is not numeric: {raw!r}") from exc
+    if not math.isfinite(value):
+        raise ValueError(f"{source}: required metric '{metric}' must be finite: {raw!r}")
+    return value
+
+
 def cmd_compare(args):
-    b = _overall(args.baseline)
-    c = _overall(args.candidate)
+    try:
+        b = _overall(args.baseline)
+        c = _overall(args.candidate)
+    except (OSError, UnicodeError, ValueError) as exc:
+        print("CAFA-IVR release gate: FAIL")
+        print(f" - invalid summary input: {exc}")
+        raise SystemExit(2) from exc
+
     rules = [
         ("asr_ifr", args.max_asr_ifr_delta),
-        ("ceer", args.max_ceer_delta),
+        ("ceer", None if getattr(args, "no_ceer_gate", False) else args.max_ceer_delta),
         ("wer", args.max_wer_delta),
     ]
-    failed = []
+    checks = []
+    invalid = []
     for metric, limit in rules:
         if limit is None:
             continue
         try:
-            delta = float(c[metric]) - float(b[metric])
-        except (KeyError, ValueError, TypeError):
+            baseline_value = _metric_value(b, metric, args.baseline)
+            candidate_value = _metric_value(c, metric, args.candidate)
+        except ValueError as exc:
+            invalid.append(str(exc))
             continue
-        print(f"{metric}: baseline={b[metric]} candidate={c[metric]} delta={delta:.4f} limit={limit:.4f}")
+        checks.append((metric, baseline_value, candidate_value, limit))
+
+    if invalid:
+        print("CAFA-IVR release gate: FAIL")
+        for error in invalid:
+            print(f" - invalid summary input: {error}")
+        raise SystemExit(2)
+
+    failed = []
+    for metric, baseline_value, candidate_value, limit in checks:
+        delta = candidate_value - baseline_value
+        print(
+            f"{metric}: baseline={baseline_value} candidate={candidate_value} "
+            f"delta={delta:.4f} limit={limit:.4f}"
+        )
         if delta > limit:
             failed.append((metric, delta, limit))
     if failed:
@@ -92,6 +131,11 @@ def build_parser():
     c.add_argument("--candidate", required=True)
     c.add_argument("--max-asr-ifr-delta", type=float, default=0.02)
     c.add_argument("--max-ceer-delta", type=float, default=0.01)
+    c.add_argument(
+        "--no-ceer-gate",
+        action="store_true",
+        help="explicitly disable CEER comparison for a dataset without critical-entity annotations",
+    )
     c.add_argument("--max-wer-delta", type=float, default=None)
     c.set_defaults(func=cmd_compare)
     return p
