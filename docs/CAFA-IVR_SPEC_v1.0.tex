@@ -53,9 +53,13 @@ A speech-attributable state narrows the failure surface; it does not by itself p
 \]
 A conditional variant may divide by the number of text-control successes.
 
-\textbf{CEER.} Critical-Entity Error Rate measures governed semantic values such as amounts, dates, negation, account type, authentication values, and lock/unlock/cancel/confirm actions. Entity values \textbf{SHOULD} be normalized before scoring.
+\textbf{CEER.} Critical-Entity Error Rate measures governed semantic values such as amounts, dates, negation, account type, authentication values, and lock/unlock/cancel/confirm actions. Entity values \textbf{SHOULD} be normalized before scoring. For a result set, CEER is the total number of missing and spurious critical entities divided by the total number of reference critical entities. It is an unbounded normalized error count, not a probability, and may exceed 1.0 when spurious entities outnumber reference entities.
 
-\textbf{CIER (optional).} A deployment may apply severity weights to L0--L4 outcomes. The reference scorer uses illustrative weights L0=0, L1=0, L2=.25, L3=.65, L4=1.0. These are policy examples, not universal thresholds.
+\textbf{CIER (optional).} CIER measures realized consequence. Let $\mathcal{I}$ be the set of trials carrying a recognized impact level, let $A_i=1$ when the audio-path task succeeds and $0$ when it fails, and let $w(L_i)$ be the selected impact-level weight. Then
+\[
+\mathrm{CIER}=\frac{1}{|\mathcal{I}|}\sum_{i\in\mathcal{I}}(1-A_i)w(L_i).
+\]
+The reference scorer uses illustrative weights L0=0, L1=0, L2=.25, L3=.65, L4=1.0. A successful audio-path task contributes zero rather than being excluded, so CIER is a severity-weighted failure rate over the impact-labelled population, not an average severity of failures. A failed task contributes its L0--L4 weight; a trial without a recognized impact level is excluded. CIER counts realized audio-path task failures regardless of attribution. An ASR-attributable consequence analysis should restrict the population to \texttt{SPEECH\_ATTRIBUTABLE} trials before summarizing. The weights are policy examples, not universal thresholds.
 
 \section*{5. Minimum trial record}
 \begin{center}\small
@@ -100,6 +104,8 @@ An adapter only needs to populate the trial record. Credentials should stay in t
 
 \section*{9. Reproducibility and independent adoption}
 An auditable run should freeze the audio or source identifiers, perturbation parameters and random seeds, ASR version, downstream version, prompts/tools when applicable, locale, endpoint configuration, test-oracle version, and CAFA-IVR specification version.
+
+The v1.0 reference release recomputes scores from supplied decoded outputs. It does not include the audio-generation, ASR-decoding, perturbation, or bootstrap-resampling pipelines and therefore does not reproduce the reported decode-level and bootstrap results end to end. The included 360-trial pilot contains no critical-entity annotations or impact labels: it exercises WER and ASR-IFR, but does not empirically exercise CEER or CIER.
 
 An organization may accurately state that it adopted CAFA-IVR only when it actually used the paired procedure. A useful implementation statement is:
 

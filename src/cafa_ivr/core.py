@@ -79,14 +79,22 @@ def _entity_multiset(raw: Any) -> Counter[tuple[str, str]]:
     return out
 
 
-def critical_entity_error_rate(expected: Any, observed: Any) -> float | None:
+def _critical_entity_error_counts(expected: Any, observed: Any) -> tuple[int, int] | None:
     exp = _entity_multiset(expected)
     obs = _entity_multiset(observed)
     if not exp:
         return None
     missing = sum((exp - obs).values())
     extra = sum((obs - exp).values())
-    return (missing + extra) / sum(exp.values())
+    return missing + extra, sum(exp.values())
+
+
+def critical_entity_error_rate(expected: Any, observed: Any) -> float | None:
+    counts = _critical_entity_error_counts(expected, observed)
+    if counts is None:
+        return None
+    errors, reference_count = counts
+    return errors / reference_count
 
 
 def attribution(text_control_pass: Any, audio_task_success: Any) -> str:
@@ -118,11 +126,24 @@ def cafa_score_row(row: dict[str, Any]) -> dict[str, Any]:
     out["attribution"] = attribution(out["text_control_pass"], out["audio_task_success"])
     out["asr_ifr_contrib"] = int(out["attribution"] == "SPEECH_ATTRIBUTABLE")
 
-    ceer = critical_entity_error_rate(row.get("expected_entities_json"), row.get("predicted_entities_json"))
-    out["ceer"] = "" if ceer is None else ceer
+    ceer_counts = _critical_entity_error_counts(
+        row.get("expected_entities_json"), row.get("predicted_entities_json")
+    )
+    if ceer_counts is None:
+        out["ceer"] = ""
+        out["ceer_error_count"] = ""
+        out["ceer_reference_count"] = ""
+    else:
+        errors, reference_count = ceer_counts
+        out["ceer"] = errors / reference_count
+        out["ceer_error_count"] = errors
+        out["ceer_reference_count"] = reference_count
 
     impact = str(row.get("impact_level", "")).strip().upper()
-    out["cier_contrib"] = CIER_WEIGHTS.get(impact, "")
+    impact_weight = CIER_WEIGHTS.get(impact)
+    out["cier_contrib"] = (
+        "" if impact_weight is None else impact_weight * int(not out["audio_task_success"])
+    )
     return out
 
 
@@ -137,13 +158,19 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
         return {"n": 0}
     intent_acc = mean(float(r["audio_task_success"]) for r in rows)
     text_acc = mean(float(r["text_control_pass"]) for r in rows)
+    ceer_errors = sum(
+        int(r["ceer_error_count"]) for r in rows if r.get("ceer_error_count") not in (None, "")
+    )
+    ceer_references = sum(
+        int(r["ceer_reference_count"]) for r in rows if r.get("ceer_reference_count") not in (None, "")
+    )
     return {
         "n": n,
         "wer": mean(r.get("wer") for r in rows),
         "intent_accuracy": intent_acc,
         "text_control_accuracy": text_acc,
         "asr_ifr": mean(r.get("asr_ifr_contrib") for r in rows),
-        "ceer": mean(r.get("ceer") for r in rows),
+        "ceer": ceer_errors / ceer_references if ceer_references else None,
         "cier": mean(r.get("cier_contrib") for r in rows),
         "speech_attributable_count": sum(int(r.get("asr_ifr_contrib", 0)) for r in rows),
     }

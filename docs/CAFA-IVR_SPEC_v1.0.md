@@ -99,6 +99,8 @@ CEER evaluates governed information such as:
 
 Entity normalization SHOULD happen before CEER scoring so equivalent representations such as `500` and `five hundred` are treated consistently.
 
+For a result set, CEER is the total number of missing and spurious critical entities divided by the total number of reference critical entities. It is an unbounded normalized error count, not a probability, and MAY exceed 1.0 when spurious entities outnumber reference entities.
+
 ### 6.4 Conversational Impact Error Rate (CIER)
 
 CIER is optional in v1.0. The reference implementation recognizes:
@@ -112,6 +114,14 @@ L4 = 1.00   critical consequence
 ```
 
 These weights are illustrative policy parameters and MUST NOT be represented as universal industry thresholds.
+
+CIER measures realized consequence. Let `I` be the set of trials carrying a recognized impact level. For each `i` in `I`, let `A_i = 1` when the audio-path task succeeds and `0` when it fails, and let `w(L_i)` be the selected impact-level weight. Then:
+
+`CIER = sum((1 - A_i) * w(L_i) for i in I) / |I|`
+
+A successful audio-path task MUST contribute `0` rather than being excluded, so CIER is a severity-weighted failure rate over the impact-labelled population rather than an average severity of failures. A failed task contributes its L0-L4 weight; a trial without a recognized impact level is excluded.
+
+CIER counts realized audio-path task failures regardless of attribution, including trials whose text control also failed. It is not restricted to `SPEECH_ATTRIBUTABLE` failures. An ASR-attributable consequence analysis SHOULD filter to `attribution = SPEECH_ATTRIBUTABLE` before summarizing CIER.
 
 ## 7. Minimum acoustic test matrix
 
@@ -173,6 +183,10 @@ A publishable or independently auditable CAFA-IVR run SHOULD freeze:
 - locale and endpoint configuration
 - test oracle version
 - CAFA-IVR specification version
+
+The v1.0 reference release recomputes scores from supplied decoded outputs. It does not include the audio-generation, ASR-decoding, perturbation, or bootstrap-resampling pipelines and therefore does not reproduce the reported decode-level and bootstrap results end to end.
+
+The included 360-trial pilot contains no critical-entity annotations or impact labels. It exercises WER and ASR-IFR; it does not empirically exercise CEER or CIER.
 
 ## 12. Adoption statement
 
