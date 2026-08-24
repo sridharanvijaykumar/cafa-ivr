@@ -1,14 +1,20 @@
 # Changelog
 
-## Unreleased
+## 1.1.0 - 2026-08-24
 
-- Made baseline/candidate comparison fail closed for missing, nonnumeric, nonfinite, or empty enabled metrics, with an explicit opt-out for datasets where optional CEER is not annotated.
-- Corrected summary CEER aggregation to match the published corpus-level equation.
-- Defined CIER as a realized-consequence score and corrected successful audio-path tasks to contribute zero.
-- Added regression coverage and automated release-manifest verification.
-- Clarified CEER's range and the exact reproducibility boundary of the released artifact.
-- Repaired release-manifest generation so cache files cannot be included, and pinned repository text files to LF for cross-platform digest stability.
-- Renamed the technical manuscript artifacts to venue-neutral filenames for reusable adoption outside any single conference.
+### Behaviour changes
+
+- Baseline/candidate comparison now fails closed for missing, nonnumeric, nonfinite, or empty enabled metrics. Pipelines that previously passed malformed input now exit with status 2; datasets without critical-entity annotations can explicitly opt out with `--no-ceer-gate`.
+- CIER is now a realized-consequence score. Successful known-impact audio-path tasks contribute zero, so values change on existing impact-labelled data.
+- Corpus CEER now uses the published micro-average, so values change on existing entity-annotated data.
+- Technical manuscript artifacts moved to venue-neutral `paper/CAFA-IVR.pdf` and `paper/CAFA-IVR.tex` paths; the old `paper/CAFA-IVR_ICASSP2027.*` paths no longer resolve on this release tree.
+
+### Fixes and additions
+
+- Repaired release-manifest generation so cache files cannot be included and added automated manifest verification.
+- Pinned repository text files to LF for cross-platform digest stability.
+- Clarified CEER's unbounded range and the released artifact's exact reproducibility boundary.
+- Added regression coverage for the corrected gate and metric behavior; the standard-library suite now contains 14 tests.
 
 ## 1.0.0 - 2026-08-18
 
