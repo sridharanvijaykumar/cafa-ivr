@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cafa-ivr"
-version = "1.0.0"
+version = "1.1.0"
 description = "Reference implementation of Counterfactual ASR Failure Attribution for conversational IVR"
 requires-python = ">=3.10"
 authors = [{name = "Vijay Kumar Sridharan"}]
