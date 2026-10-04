@@ -2,6 +2,7 @@
 3cf5c3e8b3c85317bf8faf837050a4bf7d782a592724cd2ea5df026eeff91897  ./.github/ISSUE_TEMPLATE/adoption-report.md
 c422820ad99471d39e717bdd59f5b6056bcc0df76f5c23de04437908922c3d8c  ./.github/ISSUE_TEMPLATE/bug-report.md
 ef2d2abbdad4fd2d67b108d929f51efbfbed951cff49e6d56ea76cb82a83ad87  ./.github/workflows/cafa-regression.yml
+ef37dde75280bfb760ec85f703b4acd524e0337e4192bdb1aeb5afe508470af0  ./.github/workflows/publish.yml
 03066b8d7e26f65599be22988ca5b09dc7da88a91fedfa0279a5156598a80954  ./.gitignore
 2f23abf6dcfe65fc7b464848dde783c1df8d636b8e21b82c1c45e3eb0955717f  ./CHANGELOG.md
 eb24dfaf3e1a1e0bba72cea46e4906a428f9d6e99c2033ef8de0be99f8ccd7ee  ./CITATION.cff
