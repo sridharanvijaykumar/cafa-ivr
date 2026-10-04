@@ -44,16 +44,18 @@ CAFA-IVR also supports:
 Requires Python 3.10+.
 
 ```bash
+git clone https://github.com/sridharanvijaykumar/cafa-ivr.git
+cd cafa-ivr
 python -m venv .venv
 source .venv/bin/activate
-pip install -e . --no-build-isolation
+pip install -e .
 cafa-ivr score \
   --input examples/demo_results.csv \
   --out demo_out
 ```
 
-(The `--no-build-isolation` flag installs using your environment's setuptools instead of
-downloading build dependencies.)
+(If your environment blocks build isolation, use `pip install -e . --no-build-isolation`
+instead — it requires setuptools to be pre-installed: `pip install setuptools` first.)
 
 Outputs:
 
