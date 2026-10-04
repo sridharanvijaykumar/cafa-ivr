@@ -6,10 +6,17 @@ build-backend = "setuptools.build_meta"
 name = "cafa-ivr"
 version = "1.1.0"
 description = "Reference implementation of Counterfactual ASR Failure Attribution for conversational IVR"
+readme = "README.md"
 requires-python = ">=3.10"
 authors = [{name = "Vijay Kumar Sridharan"}]
 license = {text = "Apache-2.0"}
 keywords = ["ASR", "IVR", "conversational AI", "testing", "WER", "NLU"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Apache Software License",
+  "Intended Audience :: Developers",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 
 [project.scripts]
 cafa-ivr = "cafa_ivr.cli:main"
