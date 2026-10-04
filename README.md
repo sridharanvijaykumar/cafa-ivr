@@ -1,7 +1,9 @@
-# CAFA-IVR v1.0
+# CAFA-IVR
 
-[![CAFA-IVR CI](https://github.com/sridharanvijaykumar/cafa-ivr/actions/workflows/cafa-regression.yml/badge.svg)](https://github.com/sridharanvijaykumar/cafa-ivr/actions/workflows/cafa-regression.yml)
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![CAFA-IVR CI](https://github.com/sridharanvijaykumar/cafa-ivr/actions/workflows/ci.yml/badge.svg)](https://github.com/sridharanvijaykumar/cafa-ivr/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
+[![Release](https://img.shields.io/github/v/release/sridharanvijaykumar/cafa-ivr)](https://github.com/sridharanvijaykumar/cafa-ivr/releases)
 
 **Counterfactual ASR Failure Attribution for Conversational IVR**
 
@@ -14,8 +16,8 @@ CAFA-IVR is a vendor-neutral testing framework for answering a practical questio
 Run every semantic test through two paths:
 
 ```text
-TEXT CONTROL:  reference text -> NLU / agent -> task outcome
-AUDIO PATH:    audio -> ASR -> NLU / agent -> task outcome
+TEXT CONTROL: reference text -> NLU / agent -> task outcome
+AUDIO PATH:   audio -> ASR -> NLU / agent -> task outcome
 ```
 
 CAFA-IVR then distinguishes:
@@ -39,15 +41,19 @@ CAFA-IVR also supports:
 
 ## Quick start
 
+Requires Python 3.10+.
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -e . --no-build-isolation
-
 cafa-ivr score \
   --input examples/demo_results.csv \
   --out demo_out
 ```
+
+(The `--no-build-isolation` flag installs using your environment's setuptools instead of
+downloading build dependencies.)
 
 Outputs:
 
@@ -73,6 +79,28 @@ cafa-ivr score \
 
 This release reproduces **scoring**: it recomputes the reported metrics from the decoded outputs supplied in `empirical/`. It does **not** include the audio-synthesis, ASR-decoding, perturbation, or bootstrap-resampling pipelines and therefore does not regenerate those decoded outputs. The 540 local decodes and the 5,000-sample bootstrap intervals reported in the paper are not reproducible end to end from this tag.
 
+A correct reproduction yields exactly: 360 trials, 142 speech-attributable failures,
+0.648429 mean WER, 0.411111 intent/task accuracy, 0.800000 text-control accuracy, and
+0.394444 ASR-IFR.
+
+What the attribution report looks like (real output from the scorer on the illustrative
+demo file — 12 trials, so CEER exceeds 1.0 here, which is expected behavior for an
+unbounded error count):
+
+```markdown
+# CAFA-IVR Results
+
+Trials: **12**
+Mean WER: **0.1944**
+Intent/task accuracy: **0.5000**
+Text-control accuracy: **0.8333**
+ASR-IFR: **0.3333**
+CEER: **2.0000**
+CIER: **0.3458**
+
+ASR-IFR counts trials where the reference-text control passes but the audio-path task fails.
+```
+
 ## CI/CD gate
 
 ```bash
@@ -84,6 +112,7 @@ cafa-ivr compare \
 ```
 
 The default numeric gates are examples for tooling demonstration, not universal acceptance criteria. Production teams should govern their own thresholds by risk tier and historical baseline.
+
 Every enabled gate requires a present, numeric, finite metric in both summaries and fails closed on invalid input. Datasets without critical-entity annotations must explicitly disable that optional gate with `--no-ceer-gate`.
 
 ## Integration contract
@@ -113,9 +142,15 @@ The included 360-trial pilot exercises **ASR-IFR** and **WER** only. It carries 
 
 Organizations adopting the framework should record the exact CAFA-IVR version, test scope, engines, thresholds, and change-management decision. `docs/ADOPTION_EVIDENCE_LOG.md` provides a neutral template so independent use is reproducible and auditable.
 
+Want to contribute? See [CONTRIBUTING.md](CONTRIBUTING.md) — good first areas include
+platform adapters, entity normalizers, CI/CD integrations, and documentation. Please
+respect the evidence rules there: no fabricated or estimated results presented as
+measurements.
+
 ## Technical manuscript
 
 See `paper/CAFA-IVR.pdf` and `paper/CAFA-IVR.tex`.
+
 The repository provides this venue-neutral technical manuscript as supporting documentation and does not represent it as accepted or published.
 
 ## License
@@ -124,8 +159,8 @@ Reference implementation: Apache-2.0. Dataset/audio licensing remains governed b
 
 ## Author
 
-Vijay Kumar Sridharan  
-IEEE Senior Member  
+Vijay Kumar Sridharan
+IEEE Senior Member
 Frisco, TX, USA
 
 ## Repository adoption workflow
@@ -134,11 +169,11 @@ CAFA-IVR is designed to be forked or wrapped rather than requiring teams to repl
 
 ```text
 existing test audio ──> existing ASR ──> existing NLU/agent ──> result adapter
-         │
+ │
 reference text ─────────────────────────> same NLU/agent ────> text control
-                                                              │
-                                                              v
-                                                         CAFA-IVR scorer
+ │
+ v
+ CAFA-IVR scorer
 ```
 
 Teams can add an adapter under `adapters/`, generate the required trial CSV, run `cafa-ivr score`, and optionally place `cafa-ivr compare` in CI/CD. Independent evaluations are welcome through the adoption-report issue template.
