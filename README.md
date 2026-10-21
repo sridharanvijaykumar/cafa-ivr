@@ -5,6 +5,8 @@
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
 [![Release](https://img.shields.io/github/v/release/sridharanvijaykumar/cafa-ivr)](https://github.com/sridharanvijaykumar/cafa-ivr/releases)
 
+▶ [5-minute demo of the 360-trial repro](https://youtu.be/c9_bh220VAE) — screen capture with generated narration
+
 **Counterfactual ASR Failure Attribution for Conversational IVR**
 
 CAFA-IVR is a vendor-neutral testing framework for answering a practical question that Word Error Rate (WER) cannot answer by itself:
